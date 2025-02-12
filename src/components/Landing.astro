@@ -1,14 +1,68 @@
 ---
-import { css } from "../../styled-system/css";
+import { Icon } from 'astro-icon/components'
+
+import { css, cx } from "../../styled-system/css";
+import { grid, gridItem } from "../../styled-system/patterns";
 
 
 ---
 
 <div id="container">
-	<main>
-		<section id="hero">
-			<h1 class="text-3xl font-bold underline">Hola mundo</h1>
+	<main class="bg-slate-950">
+		<section id="hero" 
+			class={
+				cx( 
+					"w-full h-fit bg-slate-900",
+					css({}) 
+				)
+			}
+		>
+			<nav id="hero__nav" class={cx("flex w-full h-14 bg-slate-800 justify-center", css({ alignItems: 'center' }))}>
+				<ul id="nav__list" class={cx("flex flex-row h-fit w-auto space-x-9 font-semibold px-8 py-1", css({ color: '#a6a6a6', borderRadius: '5px', border: '1px solid rgba(255, 255, 255, 0.5)' }))}>
+					<li id="nav__list_Home" class="">HOME</li>
+					<li id="nav__list_Projects" class="flex">PROJECTS</li>
+					<li id="nav__list_Contact" class="flex">CONTACT</li>
+				</ul>
+			</nav>
+			<header id="hero__header" class={cx("w-full h-[300px] bg-slate-700 px-48")}>
+				<div id="header_content__box" class={cx("w-full h-full", grid({columns: 12}))}>
+					<div class={cx( "flex flex-col", gridItem({colSpan: 4}), css({ height: '100%', width: '100%', backgroundColor: 'slate.950' }) )}>
+						<div id="content_left__name" class={cx("pt-5 text-gray-300", css({ height: '25%' }))}>
+							Que tal, soy REDACTED
+						</div>
+						<div id="content_left__title" class={cx("text-white text-8xl  font-medium", css({ height: '60%' }))}>
+							Software Developer
+						</div>
+						<ul id="content_left__socials" class={cx("flex flex-row space-x-5 bg-amber-50 mt-2", css({ height: '15%', alignItems: 'center', paddingLeft: '16px' }))}>
+							<li class="h-full">
+								<!-- TODO ajustar tamanos individuales de iconos -->
+								<Icon name="logos/github" class="h-[50px]"/> 
+							</li>
+							<li>
+								<Icon name="logos/linkedin"/>
+							</li>
+							<li>
+								<Icon name="logos/medium"/>
+							</li>
+							<li>
+								<Icon name="logos/frontendmentor"/>
+							</li>
+							<li>
+								<Icon name="logos/email"/>
+							</li>
+						</ul>
+					</div>
+					<div class={cx( gridItem({colSpan: 8}), css({ height: '100%', width: '100%', backgroundColor: 'red.300' }) )}>
+
+					</div>
+				</div>
+			</header>
 		</section>
+		<footer id="footer">
+			<section id="footer__contact">
+
+			</section>
+		</footer>
 	</main>
 </div>
 
