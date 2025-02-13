@@ -1,0 +1,17 @@
+---
+import HeaderContentLeft from "./HeaderContentLeft.astro";
+import HeaderContentRight from "./HeaderContentRight.astro";
+
+import { cx } from "../../../styled-system/css";
+import { grid } from "../../../styled-system/patterns";
+---
+
+<header id="hero__header" class={cx("w-full h-[300px] bg-[#161515] px-48 mt-12")}>
+    <div id="header_content__box" class={cx("w-full h-full", grid({columns: 12}))}>
+        
+        <HeaderContentLeft gridItemColSpan={4}/>
+
+        <HeaderContentRight gridItemColSpan={8}/>
+
+    </div>
+</header>

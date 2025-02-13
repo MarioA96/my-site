@@ -1,1 +1,68 @@
 @layer reset, base, tokens, recipes, utilities;
+
+@font-face {
+    font-family: 'Ubuntu Bold';
+    src: url('/assets/fonts/Ubuntu/Ubuntu-Bold.ttf');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ubuntu Bold Italic';
+    src: url('/assets/fonts/Ubuntu/Ubuntu-BoldItalic.ttf');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ubuntu Italic';
+    src: url('/assets/fonts/Ubuntu/Ubuntu-Italic.ttf');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ubuntu Light';
+    src: url('/assets/fonts/Ubuntu/Ubuntu-Light.ttf');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ubuntu Light Italic';
+    src: url('/assets/fonts/Ubuntu/Ubuntu-LightItalic.ttf');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ubuntu Medium';
+    src: url('/assets/fonts/Ubuntu/Ubuntu-Medium.ttf');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ubuntu Medium Italic';
+    src: url('/assets/fonts/Ubuntu/Ubuntu-MediumItalic.ttf');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ubuntu Regular';
+    src: url('/assets/fonts/Ubuntu/Ubuntu-Regular.ttf');
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --font-ubuntu-bold: 'Ubuntu Bold', sans-serif;
+    --font-ubuntu-bold-italic: 'Ubuntu Bold Italic', sans-serif;
+    --font-ubuntu-italic: 'Ubuntu Italic', sans-serif;
+    --font-ubuntu-light: 'Ubuntu Light', sans-serif;
+    --font-ubuntu-light-italic: 'Ubuntu Light Italic', sans-serif;
+    --font-ubuntu-medium: 'Ubuntu Medium', sans-serif;
+    --font-ubuntu-medium-italic: 'Ubuntu Medium Italic', sans-serif;
+    --font-ubuntu-regular: 'Ubuntu Regular', sans-serif;
+}
