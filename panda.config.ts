@@ -12,7 +12,20 @@ export default defineConfig({
 
   // Useful for theme customization
   theme: {
-    extend: {},
+    extend: {
+      tokens: {
+        fonts: {
+          ubuntu_bold: { value: 'var(--font-ubuntu-bold), sans-serif' },
+          ubuntu_bold_italic: { value: 'var(--font-ubuntu-bold-italic), sans-serif' },
+          ubuntu_italic: { value: 'var(--font-ubuntu-italic), sans-serif' },
+          ubuntu_light: { value: 'var(--font-ubuntu-light), sans-serif' },
+          ubuntu_light_italic: { value: 'var(--font-ubuntu-italic), sans-serif' },
+          ubuntu_medium: { value: 'var(--font-ubuntu-medium), sans-serif' },
+          ubuntu_medium_italic: { value: 'var(--font-ubuntu-medium-italic), sans-serif' },
+          ubuntu_regular: { value: 'var(--font-ubuntu-regular), sans-serif' },
+        }
+      }
+    },
   },
 
   // The output directory for your css system
