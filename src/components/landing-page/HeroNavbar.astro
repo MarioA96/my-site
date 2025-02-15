@@ -1,0 +1,17 @@
+---
+import { css, cx } from "../../../styled-system/css";
+---
+
+<nav id="hero__nav" class={cx("flex w-full h-14 bg-[#161515] justify-center mt-6", css({ alignItems: 'center' }))}>
+    <ul id="nav__list" class={cx("flex flex-row h-fit w-auto space-x-9 font-semibold px-16 py-3 bg-[#1a1a1a]", css({ borderRadius: '30px', border: '1px solid rgba(172, 172, 172, 0.3)' }))}>
+        <li id="nav__list_Home" class="text-gray-200">
+            HOME
+        </li>
+        <li id="nav__list_Projects" class="text-gray-500">
+            PROJECTS
+        </li>
+        <li id="nav__list_Contact" class="text-gray-500">
+            CONTACT
+        </li>
+    </ul>
+</nav>
