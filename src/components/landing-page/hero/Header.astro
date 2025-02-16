@@ -1,0 +1,28 @@
+---
+import HeaderContentLeft from "./HeaderContentLeft.astro";
+import HeaderContentRight from "./HeaderContentRight.astro";
+
+import { cx, css } from "../../../../styled-system/css";
+import { grid } from "../../../../styled-system/patterns";
+import { cva } from "../../../../styled-system/css/cva.mjs";
+
+const HeroHeaderStyles = cva({
+
+    base: {
+        width: '100%',
+        height: '300px',
+        backgroundColor: '#161515',
+    }
+
+});
+---
+
+<header id="hero__header" class={cx("px-48 mt-12", HeroHeaderStyles({}))}>
+
+    <div id="header_content__box" class={cx( css({ width: '100%', height: '100%' }), grid({columns: 12}))}>
+        <HeaderContentLeft />
+
+        <HeaderContentRight />
+    </div>
+
+</header>
