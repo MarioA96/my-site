@@ -1,0 +1,26 @@
+---
+import { css, cx } from "../../../../styled-system/css";
+import { grid, gridItem } from "../../../../styled-system/patterns";
+---
+
+<div class={cx( css({ width: '70%', height: '300px', backgroundColor: 'red.200' }), grid({columns: 12}) )}>
+
+    <div id="whatIDo_container" class={cx( gridItem({ colSpan: 5 }), css({ width: '100%', height: '100%', backgroundColor: 'red.400', display: 'flex', flexDirection: 'column' }) )}>
+
+        <div id="whatIDo_title__container" class="flex w-full h-[25%] bg-amber-300 items-center">
+            <p id="title_content" class={css({ fontFamily: 'ubuntu_regular', fontSize: '4xl', color: 'white' })}>
+                ¿Qué es lo que hago?
+            </p>
+        </div>
+        <div id="whatIDo_content">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+    </div>
+    <div class={cx( gridItem({ colSpan: 7 }), css({ width: '100%', height: '100%', backgroundColor: 'red.600' }) )}>
+
+    </div>
+
+</div>
