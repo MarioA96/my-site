@@ -1,0 +1,24 @@
+---
+import { cx, cva } from "../../../../styled-system/css";
+import { grid, gridItem } from "../../../../styled-system/patterns";
+
+const AdditionalInfoStyles = cva({
+
+    base: {
+        width: '70%',
+        height: '220px',
+        display: 'flex',
+        flexDirection: 'row',
+        backgroundColor: 'red.200'
+    }
+
+});
+---
+
+<div id="additionalInfo__container" class={cx( AdditionalInfoStyles(), grid({ columns: 12 }) )}>
+
+    <div id="contact_content__box" class={cx( gridItem({ colSpan: 4 }), "w-full h-full bg-amber-500" )}></div>
+    <div id="builtInfo_content_box" class={cx( gridItem({ colSpan: 4 }), "w-full h-full bg-amber-700" )}></div>
+    <div id="player_content_box" class={cx( gridItem({ colSpan: 4 }), "w-full h-full bg-amber-900" )}></div>
+
+</div>

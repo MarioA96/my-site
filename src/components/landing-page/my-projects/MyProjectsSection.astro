@@ -1,0 +1,35 @@
+---
+import { css, cx, cva } from "../../../../styled-system/css";
+import { grid, gridItem } from "../../../../styled-system/patterns";
+
+
+const MyProjectsStyles = cva({
+
+    base: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '70%', 
+        height: '400px', 
+        backgroundColor: 'red.200'
+    }
+
+})
+
+---
+
+<div id="my-projects__container" class={cx( MyProjectsStyles() )}>
+
+    <div id="upper_title_box" class="w-full h-[80px] bg-amber-400 order-1">
+        <div></div>
+        <div></div>
+    </div>
+    <div id="projects_carousel_box" class="w-full h-[270px] bg-amber-700 order-2">
+        <div id="project_card">
+            aki ba un carruzel :) 
+        </div>
+    </div>
+    <div id="footer_container" class="w-full h-[50px] bg-amber-50 order-3">
+
+    </div>
+
+</div>
