@@ -1,0 +1,82 @@
+---
+import { Icon } from "astro-icon/components"
+import { cx, css, cva } from "../../../../styled-system/css"
+
+
+const skills = [
+    { id: 1, content: 'Javascript', imgUrl: 'logos/skills/javascript' },
+    { id: 2, content: 'TypeScript', imgUrl: 'logos/skills/typescript' },
+    { id: 3, content: 'ReactJS', imgUrl: 'logos/skills/reactjs' },
+    { id: 4, content: 'Astro', imgUrl: 'logos/skills/astro' },
+    { id: 5, content: 'GitHub', imgUrl: 'logos/skills/github' },
+    { id: 6, content: 'CSS', imgUrl: 'logos/skills/css' },
+    { id: 7, content: 'HTML', imgUrl: 'logos/skills/html5' },
+    { id: 8, content: 'C#', imgUrl: 'logos/skills/csharp' },
+    { id: 9, content: 'Asp .NET Core', imgUrl: 'logos/skills/dotnet' },
+    { id: 10, content: 'PandaCSS', imgUrl: 'logos/skills/pandacss' },
+    { id: 11, content: 'TailwindCSS', imgUrl: 'logos/skills/tailwindcss' },
+    { id: 12, content: 'Svelte', imgUrl: 'logos/skills/svelte' },
+    { id: 13, content: 'React Native', imgUrl: 'logos/skills/reactnative' },
+    { id: 14, content: 'React Expo', imgUrl: 'logos/skills/expo' },
+    { id: 15, content: 'PostgreSQL', imgUrl: 'logos/skills/postgresql' },
+    { id: 16, content: 'Firebase', imgUrl: 'logos/skills/firebase' },
+    { id: 17, content: 'Turso', imgUrl: 'logos/skills/turso' },
+    { id: 18, content: 'WSL', imgUrl: 'logos/skills/linux' },
+    { id: 19, content: 'Docker', imgUrl: 'logos/skills/docker' },
+    { id: 20, content: 'Software Architecture', imgUrl: 'logos/skills/architecture' },
+    { id: 21, content: 'Clean Code', imgUrl: 'logos/skills/clean' },
+]
+
+const MarqueeContentLabel = cva({
+
+    base: {
+        fontFamily: 'ubuntu_medium',
+        fontSize: '18px',
+        color: 'white'
+    }
+
+})
+---
+
+<div id="marquee" class="flex flex-row whitespace-nowrap w-[50vw] h-fit overflow-hidden rounded-2xl items-center">
+    
+    <div id="shadow-track__1" class={cx( "absolute z-10 flex w-[50vw] h-14 bg-transparent rounded-2xl", css({ boxShadow : 'inset -70px 0px 70px -15px rgba(16,15,15,0.5)' }) )} />
+    <div id="shadow-track__2" class={cx( "absolute z-10 flex w-[50vw] h-14 bg-transparent rounded-2xl", css({ boxShadow : 'inset 70px 0px 70px -15px rgba(16,15,15,0.5)' }) )} />
+
+    <!--TODO Oe webon cuchame mariko, que esta chimba no se detiene en hover, arreglalo oe mariko  -->
+    <div id="track" class:list={["flex flex-row animate-content w-fit whitespace-nowrap",css({ _hover: {cursor: 'pointer', animationPlayState: 'paused'} })]}>
+        {[...skills].map((skill, index) => (
+            <div id="content" class="flex items-center align-middle w-fit h-fit flex-shrink-0 mx-4">
+                <Icon name={ skill.imgUrl } class="align-middle items-center flex h-[30px] w-[30px] mr-2"/>
+                <p class={ cx( MarqueeContentLabel(), css({ display: 'flex', alignContent: 'center' }) ) }>
+                    {skill.content }
+                </p>
+            </div>
+        ))}
+    </div>
+
+</div>
+
+<style>
+    @keyframes marquee {
+        0% {
+            transform: translateX(calc(50vw));
+        }
+        100% {
+            transform: translateX(calc(-100%));
+        }
+    }
+    
+    .animate-content {
+        animation: marquee 20s linear infinite;
+    }
+
+    #track > #content: hover {
+        -webkit-animation-play-state:paused;
+        -moz-animation-play-state:paused;
+        -o-animation-play-state:paused;
+        animation-play-state:paused;
+        cursor: pointer;
+    }
+    
+</style>
