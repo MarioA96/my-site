@@ -1,26 +1,54 @@
 ---
-import HeroNavbar from './landing-page/HeroNavbar.astro';
-import Header from './landing-page/Header.astro';
-import TrailContent from './landing-page/TrailContent.astro';
+import HeroNavbar from './landing-page/hero/HeroNavbar.astro';
+import Header from './landing-page/hero/Header.astro';
 
+import TrailContent from './landing-page/hero/TrailContent.astro';
+
+import WhatAboutSection from './landing-page/what-about/WhatAboutSection.astro';
+
+import MyProjectsSection from './landing-page/my-projects/MyProjectsSection.astro';
+
+import ContactSection from './landing-page/contact/ContactSection.astro';
+
+import AdditionalInfo from './landing-page/additional-info/AdditionalInfo.astro';
+
+import { css, cx } from '../../styled-system/css';
 ---
 
 <div id="container">
 	<main class="bg-[#161515] flex flex-col">
 
-		<section id="hero" class="w-full h-fit bg-[#161515]">
+		<section id="hero" class="w-full h-fit bg-[#161515] order-1">
 			<HeroNavbar />
-			<Header />
+			<Header/>
 		</section>
 
-		<section id="my-stack-trail" class="flex mt-4 w-full h-fit justify-center">
+		<section id="my-stack-trail" class="flex mt-8 w-full h-fit justify-center bg-[#161515] order-2">
 			<TrailContent />
 		</section>
 
-		<footer id="footer">
-			<section id="footer__contact">
+		<section id="what-about" class="flex w-full h-fit mt-16 bg-[#161515] justify-center order-3">
+			<WhatAboutSection />
+		</section>
 
-			</section>
+		<section id="my-projects" class="flex w-full h-fit mt-14 bg-[#161515] justify-center order-4">
+			<MyProjectsSection />
+		</section>
+
+		<section id="my-projects" class="flex w-full h-fit mt-14 bg-[#161515] justify-center order-5">
+			<ContactSection />
+		</section>
+
+		<section id="additional-info" class="flex w-full h-fit mt-14 bg-[#161515] justify-center order-6">
+			<AdditionalInfo />
+		</section>
+
+		<footer id="footer" class="flex w-full h-fit my-10 bg-[#161515] justify-center order-7">
+			<div class="footer_content__box" class="h-[50px] w-full align-middle">
+				<p class={cx( css({ color: 'gray.400', fontFamily: 'ubuntu_regular' }) )}>
+					Copyright 2025
+				</p>
+			</div>
 		</footer>
 
 	</main>
@@ -29,11 +57,11 @@ import TrailContent from './landing-page/TrailContent.astro';
 <style>
 	#container {
 		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-		height: 100%;
+		height: fit-content;
 	}
 
 	main {
-		height: 100%;
+		height: fit-content;
 		display: flex;
 	}
 </style>
