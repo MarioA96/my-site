@@ -1,0 +1,27 @@
+---
+import { cx, cva } from "../../../../styled-system/css";
+import { grid, gridItem } from "../../../../styled-system/patterns";
+
+const ContactStyles = cva({
+
+    base: {
+        width: '70%',
+        height: '350px',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: 'red.200'
+    }
+
+});
+---
+
+<div id="conctact__container" class={cx( ContactStyles() )}>
+
+    <div id="upper_box" class="flex w-full h-[80px] flex-col bg-amber-300 order-1">
+    </div>
+    <div id="content_box" class={ cx( "flex w-full h-[270px] bg-amber-600 order-2", grid({ columns: 12 }) )}>
+        <div id="info_content__box" class={cx( gridItem({ colSpan: 6 }), "w-full h-full bg-amber-700" )}></div>
+        <div id="form_content_box" class={cx( gridItem({ colSpan: 6 }), "w-full h-full bg-amber-900" )}></div>
+    </div>
+
+</div>
