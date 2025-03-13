@@ -1,9 +1,25 @@
 ---
-import { css, cx } from "../../../../styled-system/css";
+import { css, cva, cx } from "../../../../styled-system/css";
+
+const HeroNavStyles = cva({
+    base: {
+        display: 'flex',
+        width: '100%',
+        height: '56px',
+        marginTop: '24px',
+        backgroundColor: '#161515',
+        justifyContent: 'center',
+        alignItems: 'center',
+        '&#nav-list': {
+            borderRadius: '30px', 
+            border: '1px solid rgba(172, 172, 172, 0.3)'
+        }
+    }
+});
 ---
 
-<nav id="hero__nav" class={cx("flex w-full h-14 bg-[#161515] justify-center mt-6", css({ alignItems: 'center' }))}>
-    <ul id="nav__list" class={cx("flex flex-row h-fit w-auto space-x-9 font-semibold px-16 py-3 bg-[#1a1a1a]", css({ borderRadius: '30px', border: '1px solid rgba(172, 172, 172, 0.3)' }))}>
+<nav id="hero__nav" class={cx( HeroNavStyles({}) )}>
+    <ul id="nav__list" class:list={["flex flex-row h-fit w-auto font-semibold space-x-9 px-16 py-3 bg-[#1a1a1a]"]}>
         <li id="nav__list_Home" class="text-gray-200">
             HOME
         </li>
@@ -15,3 +31,11 @@ import { css, cx } from "../../../../styled-system/css";
         </li>
     </ul>
 </nav>
+
+<style>
+    @reference "../../../styles/global.css"
+
+    .nav-list {
+        @apply 
+    }
+</style>
