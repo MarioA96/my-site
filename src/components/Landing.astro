@@ -12,16 +12,43 @@ import ContactSection from './landing-page/contact/ContactSection.astro';
 
 import AdditionalInfo from './landing-page/additional-info/AdditionalInfo.astro';
 
-import { css, cx } from '../../styled-system/css';
+import { css, cva, cx } from '../../styled-system/css';
+
+const ContainerNavbarStyles = cva({
+	base: {
+		display: 'flex',
+		position: {
+			xsm: 'fixed',
+			md: 'sticky'
+		},
+		bottom: {
+			xsm: '0',
+			md: 'inherit'
+		},
+		top: {
+			xsm: 'inherit',
+			md: '0'
+		},
+		width: {
+			xsm: '100%'
+		},
+		height: 'fit-content',
+	},
+})
 ---
 
 <div id="container">
 	<main class="bg-[#161515] flex flex-col">
 
-		<section id="hero" class="w-full h-fit bg-[#161515] order-1">
+		<div id="container-navbar" class={cx( ContainerNavbarStyles({}) )}>
 			<HeroNavbar />
-			<!-- <Header/> -->
-		</section>
+		</div>
+		
+		<div class="h-[1300px] w-full bg-amber-300 flex"></div>
+
+		<!-- <section id="hero" class="flex w-full h-fit bg-[#161515] order-1">
+			<Header/>
+		</section> -->
 
 		<!-- <section id="my-stack-trail" class="flex mt-8 w-full h-fit justify-center bg-[#161515] order-2">
 			<TrailContent />
