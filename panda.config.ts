@@ -13,14 +13,6 @@ export default defineConfig({
   // Useful for theme customization
   theme: {
     extend: {
-      breakpoints: {
-        xsm: '470px',
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1536px'
-      },
       tokens: {
         fonts: {
           ubuntu_bold: { value: 'var(--font-ubuntu-bold), sans-serif' },
@@ -32,6 +24,14 @@ export default defineConfig({
           ubuntu_medium_italic: { value: 'var(--font-ubuntu-medium-italic), sans-serif' },
           ubuntu_regular: { value: 'var(--font-ubuntu-regular), sans-serif' },
         }
+      },
+      breakpoints: {
+        xsm: '345px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px'
       }
     },
   },
