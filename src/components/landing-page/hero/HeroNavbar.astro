@@ -6,26 +6,44 @@ const HeroNavStyles = cva({
     base: {
         display: 'flex',
         width: '100%',
-        height: '56px',
-        marginTop: '24px',
+        height: {
+            xsm: '72px',
+            md: '56px'
+        },
+        marginTop: {
+            xsm: '0px',
+            md: '24px'
+        },
         backgroundColor: '#161515',
-        justifyContent: 'center',
-        alignItems: 'center',
-        '& #nav-list': {
-            borderRadius: '30px', 
+        '& ul[id^=nav-list]': {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignSelf: 'center',
+            width: '100%',
+            height: 'fit-content',
+            flexDirection: 'row',
+            borderRadius: {
+                xsm: '0px',
+                md: '30px'
+            }, 
             border: '1px solid rgba(172, 172, 172, 0.3)',
-            backgroundColor: '#1a1a1a',
-            '& .text-list': {
-                display: {
-                    xsm: 'none',
-                    md: 'block'
-                }
-            },
-            '& .icon-list': {
-                display: {
-                    xsm: 'none',
-                    md: 'block'
-                }
+            backgroundColor: 'red.700', //#1a1a1a
+            gap: '70px',
+            "& li[id^='nav__list_']": {
+                display: 'flex',
+                '& .text-list': {
+                    display: {
+                        xsm: 'none',
+                        md: 'flex'
+                    }
+                },
+                '& .icon-list': {
+                    display: {
+                        xsm: 'none',
+                        md: 'flex'
+                    }
+                },
             },
         }
     }
@@ -33,26 +51,26 @@ const HeroNavStyles = cva({
 ---
 
 <nav id="hero__nav" class={cx( HeroNavStyles({}) )}>
-    <ul id="nav-list" class="flex flex-row h-fit w-auto font-semibold px-16 py-3">
+    <ul id="nav-list" class="ul__nav-list">
         <li id="nav__list_Home">
             <span class="text-list">HOME</span>
-            <Icon class="icon-list" name="logos/navbar/home" class="text-white h-10 w-10" />
+            <Icon class="icon-list" name="logos/navbar/home" class="text-white h-7 w-7" />
         </li>
         <li id="nav__list_Projects">
             <span class="text-list">PROJECTS</span>
-            <Icon class="icon-list" name="logos/navbar/folder" class="text-gray-200 h-10 w-10" />
+            <Icon class="icon-list" name="logos/navbar/folder" class="text-gray-200 h-7 w-7" />
         </li>
         <li id="nav__list_Contact">
             <span class="text-list">CONTACT</span>
-            <Icon class="icon-list" name="logos/navbar/cursor" class="text-gray-200 h-10 w-10" />
+            <Icon class="icon-list" name="logos/navbar/cursor" class="text-gray-200 h-7 w-7" />
         </li>
     </ul> 
 </nav>
 
 <style>
+    @reference "../../../styles/global.css"
+    
+    .ul__nav-list {
+        @apply w-auto font-semibold -mt-40
+    }
 </style>
-    <!-- @reference "../../../styles/global.css"
-
-    .nav-list {
-        @apply 
-    } -->
