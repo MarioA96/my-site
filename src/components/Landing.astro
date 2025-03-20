@@ -45,10 +45,10 @@ const ContainerNavbarStyles = cva({
 		</div>
 
 		<section id="hero" class="flex w-full h-fit bg-[#161515] order-1">
-			<!-- <Header/> -->
+			<Header/>
 		</section>
 
-		<!-- <section id="my-stack-trail" class="flex mt-8 w-full h-fit justify-center bg-[#161515] order-2">
+		<section id="my-stack-trail" class="flex mt-2 md:mt-8 w-full h-fit justify-center bg-[#161515] order-2">
 			<TrailContent />
 		</section>
 
@@ -56,7 +56,7 @@ const ContainerNavbarStyles = cva({
 			<WhatAboutSection />
 		</section>
 
-		<section id="my-projects" class="flex w-full h-fit mt-14 bg-[#161515] justify-center order-4">
+		<!-- <section id="my-projects" class="flex w-full h-fit mt-14 bg-[#161515] justify-center order-4">
 			<MyProjectsSection />
 		</section>
 
@@ -80,6 +80,8 @@ const ContainerNavbarStyles = cva({
 </div>
 
 <style>
+	@reference "../styles/global.css";
+
 	#container {
 		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
 		height: fit-content;
@@ -88,5 +90,9 @@ const ContainerNavbarStyles = cva({
 	main {
 		height: fit-content;
 		display: flex;
+	}
+
+	#what-about {
+		@apply mt-20
 	}
 </style>
