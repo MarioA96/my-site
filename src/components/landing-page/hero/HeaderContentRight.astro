@@ -13,12 +13,18 @@ const ContentRightStyles = cva({
         alignItems: 'center',
         justifyItems: 'center',
         '& p#content_right__text': {
-            width: '100%',
+            width: {
+                xsm: '95%',
+                md: '100%'
+            },
             height: 'fit-content',
             color: 'gray.400',
             fontWeight: '500',
             fontFamily: 'ubuntu_light_italic',
-            fontSize: '24px',
+            fontSize: {
+                xsm: '16px',
+                md: '24px'
+            },
             paddingLeft: '20px',
         }
     }
@@ -27,13 +33,19 @@ const ContentRightStyles = cva({
 ---
 
 <div id="content_right__box" class={cx( gridItem({ colSpan: 8 }), ContentRightStyles() )}>
-    <p id="content_right__text">
+    <p id="content_right__text" class="tw-content-text">
         Con vision para transformar ideas en realidad con la mejor tecnologia para el <span class="text-color-primary shiny-text">{textFrontend}</span> 
         y <span class="text-color-secondary shiny-text">{textBackend}</span>, cumpliendo metas, un paso a la vez
     </p>
 </div>
 
 <style>
+    @reference "../../../styles/global.css";
+
+    .tw-content-text {
+        @apply pl-4 mt-4 md:mt-0
+    }
+
     .text-color-primary {
         @apply text-[#d314b3a4] /* Adjust this color to change intensity/style */
     }
