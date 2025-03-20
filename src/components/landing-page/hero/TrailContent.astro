@@ -38,16 +38,16 @@ const MarqueeContentLabel = cva({
 })
 ---
 
-<div id="marquee" class="flex flex-row whitespace-nowrap w-[50vw] h-fit overflow-hidden rounded-2xl items-center">
+<div id="marquee" class="flex flex-row whitespace-nowrap w-[90vw] md:w-[50vw] h-fit overflow-hidden rounded-2xl items-center">
     
-    <div id="shadow-track__1" class={cx( "absolute z-10 flex w-[50vw] h-14 bg-transparent rounded-2xl", css({ boxShadow : 'inset -70px 0px 70px -15px rgba(16,15,15,0.5)' }) )} />
-    <div id="shadow-track__2" class={cx( "absolute z-10 flex w-[50vw] h-14 bg-transparent rounded-2xl", css({ boxShadow : 'inset 70px 0px 70px -15px rgba(16,15,15,0.5)' }) )} />
+    <div id="shadow-track__2" class={cx( "absolute z-10 flex w-[90vw] md:w-[50vw] h-8 md:h-14 bg-transparent rounded-2xl", css({ boxShadow : 'inset 70px 0px 70px -15px rgba(16,15,15,0.7)' }) )} />
+    <div id="shadow-track__1" class={cx( "absolute z-10 flex w-[90vw] md:w-[50vw] h-8 md:h-14 bg-transparent rounded-2xl", css({ boxShadow : 'inset -70px 0px 70px -15px rgba(16,15,15,0.7)' }) )} />
 
     <!--TODO Oe webon cuchame mariko, que esta chimba no se detiene en hover, arreglalo oe mariko  -->
     <div id="track" class:list={["flex flex-row animate-content w-fit whitespace-nowrap",css({ _hover: {cursor: 'pointer', animationPlayState: 'paused'} })]}>
         {[...skills].map((skill, index) => (
-            <div id="content" class="flex items-center align-middle w-fit h-fit flex-shrink-0 mx-4">
-                <Icon name={ skill.imgUrl } class="align-middle items-center flex h-[30px] w-[30px] mr-2"/>
+            <div id="content" class:list={["tw-content"]}>
+                <Icon name={ skill.imgUrl } class:list={["tw-icon"]}/>
                 <p class={ cx( MarqueeContentLabel(), css({ display: 'flex', alignContent: 'center' }) ) }>
                     {skill.content }
                 </p>
@@ -58,6 +58,20 @@ const MarqueeContentLabel = cva({
 </div>
 
 <style>
+    @reference "../../../styles/global.css";
+
+    #marquee {
+        @apply -mt-2 md:mt-0
+    }
+
+    .tw-content {
+        @apply flex items-center align-middle w-fit h-fit flex-shrink-0 mx-4;
+    }
+
+    .tw-icon {
+        @apply align-middle items-center flex h-[30px] w-[30px] mr-2;
+    }
+
     @keyframes marquee {
         0% {
             transform: translateX(calc(50vw));
@@ -68,7 +82,7 @@ const MarqueeContentLabel = cva({
     }
     
     .animate-content {
-        animation: marquee 20s linear infinite;
+        animation: marquee 25s linear infinite;
     }
 
     #track > #content: hover {
