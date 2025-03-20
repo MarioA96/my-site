@@ -10,8 +10,18 @@ const HeroHeaderStyles = cva({
 
     base: {
         width: '100%',
-        height: '300px',
+        height: '350px',
         backgroundColor: '#161515',
+        "& #header_content__box": {
+            display: 'flex',
+            flexDirection: {
+                xsm: 'column',
+                md: 'row'
+            },
+            grid: {
+                colSpan: 12
+            }
+        }
     }
 
 });
@@ -19,7 +29,7 @@ const HeroHeaderStyles = cva({
 
 <header id="hero__header" class={cx("px-48 mt-12", HeroHeaderStyles({}))}>
 
-    <div id="header_content__box" class={cx( css({ width: '100%', height: '100%' }), grid({columns: 12}))}>
+    <div id="header_content__box">
         <HeaderContentLeft />
 
         <HeaderContentRight />
