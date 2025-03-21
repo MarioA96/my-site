@@ -1,26 +1,151 @@
 ---
-import { css, cx } from "../../../../styled-system/css";
+import { Icon } from "astro-icon/components";
+import { css, cx, cva } from "../../../../styled-system/css";
 import { grid, gridItem } from "../../../../styled-system/patterns";
+
+const WhatIDoStyles = cva({
+
+    base: {
+        width: {
+            xsm: '80%',
+            md: '70%'
+        }, 
+        height: {
+            xsm: '600px',
+            md: '300px'
+        }, 
+        // backgroundColor: 'red.200',
+        display: 'flex',
+        flexDirection: {
+            xsm: 'column',
+            md: 'row'
+        },
+        "& #whatIDo_container": {
+            width: '100%', 
+            height: '100%', 
+            // backgroundColor: 'red.400', 
+            display: 'flex', 
+            flexDirection: 'column',
+            "& #title_content": {
+                fontFamily: {
+                    xsm: 'ubuntu_medium'
+                }, 
+                fontSize: {
+                    xsm: '3xl',
+                    md: '4xl'
+                }, 
+                color: 'white'
+            }
+        },
+    }
+})
+
+const DetailsStyles = cva({
+
+    base: {
+        width: '100%',
+        height: 'fit-content',
+        backgroundColor: '#121212'
+    }
+
+});
 ---
 
-<div class={cx( css({ width: '70%', height: '300px', backgroundColor: 'red.200' }), grid({columns: 12}) )}>
+<div class={cx( WhatIDoStyles({}) )}>
 
-    <div id="whatIDo_container" class={cx( gridItem({ colSpan: 5 }), css({ width: '100%', height: '100%', backgroundColor: 'red.400', display: 'flex', flexDirection: 'column' }) )}>
+    <div id="whatIDo_container">
 
-        <div id="whatIDo_title__container" class="flex w-full h-[25%] bg-amber-300 items-center">
-            <p id="title_content" class={css({ fontFamily: 'ubuntu_regular', fontSize: '4xl', color: 'white' })}>
+        <div id="whatIDo_title__container" class="flex w-full h-[25%] items-center">
+            <p id="title_content">
                 ¿Qué es lo que hago?
             </p>
         </div>
-        <div id="whatIDo_content">
-            <div></div>
-            <div></div>
-            <div></div>
+        <div id="whatIDo_content" class="w-full h-fit">
+            <details class={cx( DetailsStyles({}), "tw-details" )} name="exclusive" open>
+                <summary class:list={["tw-summary"]}>
+                    <Icon name="utils/window" class="mt-2"/>
+                    <p>Desarrollo Web</p>
+                </summary>
+                <ul class:list={["tw-ul"]}>
+                    <li>SPA (Single Page Application)</li>
+                    <li>Landing page y sitios para negocios</li>
+                    <li>Sitios web de portafolios</li>
+                </ul>
+            </details>
+            <details class={cx( DetailsStyles({}), "tw-details" )} name="exclusive">
+                <summary class:list={["tw-summary"]}>
+                    Desarrollo Móvil
+                </summary>
+                <ul class:list={["tw-ul"]}>
+                    <li>Desarrollo móvil amigable</li>
+                    <li>Aplicaciones React Native</li>
+                </ul>
+            </details>
+            <details class={cx( DetailsStyles({}), "tw-details" )} name="exclusive">
+                <summary class:list={["tw-summary"]}>
+                    Desarrollo del UI
+                </summary>
+                <ul class:list={["tw-ul"]}>
+                    <li>Desarrollo bajo pre prototipo UI</li>
+                    <li>Desarrollo bajo demanda</li>
+                </ul>
+            </details>
         </div>
 
     </div>
-    <div class={cx( gridItem({ colSpan: 7 }), css({ width: '100%', height: '100%', backgroundColor: 'red.600' }) )}>
+    <div class={cx( css({ width: '100%', height: '100%', backgroundColor: 'red.600' }) )}>
 
     </div>
 
 </div>
+
+<style>
+
+    @reference "../../../styles/global.css";
+
+    details {
+        overflow: hidden;
+    }
+    .tw-details {
+        @apply mt-4 p-2 border-[1px] border-[rgba(169, 169, 169, 0.2)] rounded-xl
+    }
+
+    .tw-summary {
+        @apply flex text-[18px] text-white p-2;
+    }
+    summary::after {
+        content: '';
+        background: url('../../../icons/utils/chevron-arrow-down-white.svg');
+        width: 20px;
+        height: 20px;
+        fill: white;
+        color: white;
+        background-size: cover;
+        margin-left: auto;
+        transition: 0.5s;
+        margin-top: 5px;
+    }
+    details[open] > summary::after {
+        transform: rotate(180deg);
+    }
+
+    .tw-ul {
+        @apply list-disc text-gray-300 ml-4 text-sm marker:text-[10px] leading-6;
+    }
+    details ul {
+        opacity: 0;
+    }
+    details[open] ul {
+        animation: fadeIn 0.9s linear forwards;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+</style>
