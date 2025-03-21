@@ -40,8 +40,8 @@ const MarqueeContentLabel = cva({
 
 <div id="marquee" class="flex flex-row whitespace-nowrap w-[90vw] md:w-[50vw] h-fit overflow-hidden rounded-2xl items-center">
     
-    <div id="shadow-track__2" class={cx( "absolute z-10 flex w-[90vw] md:w-[50vw] h-8 md:h-14 bg-transparent rounded-2xl", css({ boxShadow : 'inset 70px 0px 70px -15px rgba(16,15,15,0.7)' }) )} />
-    <div id="shadow-track__1" class={cx( "absolute z-10 flex w-[90vw] md:w-[50vw] h-8 md:h-14 bg-transparent rounded-2xl", css({ boxShadow : 'inset -70px 0px 70px -15px rgba(16,15,15,0.7)' }) )} />
+    <div id="shadow-track__2" class={cx( "absolute z-10 flex w-[90vw] md:w-[50vw] h-8 md:h-14 bg-transparent rounded-2xl", css({ boxShadow : 'inset 40px 0px 40px -15px rgba(22,21,21,0.8)' }) )} />
+    <div id="shadow-track__1" class={cx( "absolute z-10 flex w-[90vw] md:w-[50vw] h-8 md:h-14 bg-transparent rounded-2xl", css({ boxShadow : 'inset -40px 0px 40px -15px rgba(22,21,21,0.8)' }) )} />
 
     <!--TODO Oe webon cuchame mariko, que esta chimba no se detiene en hover, arreglalo oe mariko  -->
     <div id="track" class:list={["flex flex-row animate-content w-fit whitespace-nowrap",css({ _hover: {cursor: 'pointer', animationPlayState: 'paused'} })]}>
