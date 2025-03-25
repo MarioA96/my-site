@@ -11,8 +11,8 @@ const WhatIDoStyles = cva({
             md: '70%'
         }, 
         height: {
-            xsm: '600px',
-            md: '300px'
+            xsm: 'fit-content',
+            md: 'auto'
         }, 
         // backgroundColor: 'red.200',
         display: 'flex',
@@ -49,12 +49,26 @@ const DetailsStyles = cva({
     }
 
 });
+
+const CardMatrixStyles = cva({
+
+    base: {
+        display: 'flex',
+        width: {
+            xsm: '100%'
+        },
+        height: {
+            xsm: '350px',
+            md: '100%'
+        },
+    }
+
+});
 ---
 
-<div class={cx( WhatIDoStyles({}) )}>
+<div id="container" class={cx( WhatIDoStyles({}) )}>
 
     <div id="whatIDo_container">
-
         <div id="whatIDo_title__container" class="flex w-full h-[25%] items-center">
             <p id="title_content">
                 ¿Qué es lo que hago?
@@ -62,9 +76,9 @@ const DetailsStyles = cva({
         </div>
         <div id="whatIDo_content" class="w-full h-fit">
             <details class={cx( DetailsStyles({}), "tw-details" )} name="exclusive" open>
-                <summary class:list={["tw-summary"]}>
-                    <Icon name="utils/window" class="mt-2"/>
-                    <p>Desarrollo Web</p>
+                <summary class:list={["tw-summary", "flex",]}>
+                    <Icon name="utils/window" class="tw-summary__icon"/>
+                    <p class:list={["tw-summary"]}>Desarrollo Web</p>
                 </summary>
                 <ul class:list={["tw-ul"]}>
                     <li>SPA (Single Page Application)</li>
@@ -74,7 +88,8 @@ const DetailsStyles = cva({
             </details>
             <details class={cx( DetailsStyles({}), "tw-details" )} name="exclusive">
                 <summary class:list={["tw-summary"]}>
-                    Desarrollo Móvil
+                    <Icon name="utils/mobile" class="tw-summary__icon"/>
+                    <p class:list={["tw-summary"]}>Desarrollo Móvil</p>
                 </summary>
                 <ul class:list={["tw-ul"]}>
                     <li>Desarrollo móvil amigable</li>
@@ -83,7 +98,8 @@ const DetailsStyles = cva({
             </details>
             <details class={cx( DetailsStyles({}), "tw-details" )} name="exclusive">
                 <summary class:list={["tw-summary"]}>
-                    Desarrollo del UI
+                    <Icon name="utils/tent" class="tw-summary__icon"/>
+                    <p class:list={["tw-summary"]}>Desarrollo del UI</p>
                 </summary>
                 <ul class:list={["tw-ul"]}>
                     <li>Desarrollo bajo pre prototipo UI</li>
@@ -91,10 +107,12 @@ const DetailsStyles = cva({
                 </ul>
             </details>
         </div>
-
     </div>
-    <div class={cx( css({ width: '100%', height: '100%', backgroundColor: 'red.600' }) )}>
 
+    <div class={ cx(CardMatrixStyles({}), "tw-card-matrix") }>
+        <canvas id="canv" class={css({ height: '100%', width: '100%' })}>
+
+        </canvas>
     </div>
 
 </div>
@@ -102,6 +120,10 @@ const DetailsStyles = cva({
 <style>
 
     @reference "../../../styles/global.css";
+
+    #container {
+        @apply -mt-5 md:mt-0
+    }
 
     details {
         overflow: hidden;
@@ -112,6 +134,11 @@ const DetailsStyles = cva({
 
     .tw-summary {
         @apply flex text-[18px] text-white p-2;
+        align-items: center;
+
+        & .tw-summary__icon {
+            @apply mr-1 w-7 h-7
+        }
     }
     summary::after {
         content: '';
@@ -148,4 +175,55 @@ const DetailsStyles = cva({
         }
     }
 
+
+    .tw-card-matrix {
+        @apply mt-8 md:mt-0;
+    }
+
 </style>
+
+<script>
+    const canvas = document.getElementById('canv');
+
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width = document.body.offsetWidth;
+    const h = canvas.height = document.body.offsetHeight;
+
+    const cols = Math.floor(h / 20) + 1;
+    const rows = Math.floor(w / 20) + 1;
+
+    const ypos = Array(rows).fill(0);
+    const xpos = Array(cols).fill(0);
+    
+    ctx.fillStyle = '#161515'; //background
+    ctx.fillRect(0, 0, w, h);
+
+    const colors = ['#a476ff', '#533d7f', '#2a213c'];
+
+    ctx.font = '18pt monospace';
+
+    ypos.forEach((y, indy) => {
+        xpos.forEach((x, indx)=> {
+            ctx.fillStyle = colors[Math.floor(Math.random() * 3)]
+            const text = String.fromCharCode(Math.random() * 128);
+
+            const xl = indx * 20;
+            const yl = indy * 20;
+            ctx.fillText(text, xl, yl);
+        })
+    })
+
+    const matrix = () => {
+        ypos.forEach((y, indy) => {
+            xpos.forEach((x, indx)=> {
+                ctx.fillStyle = '#161515';
+                const xl = Math.random() * indx*20;
+                const yl = Math.random() * indy*20;
+                ctx.fillRect(xl, yl, xl + 20, yl + 20);
+            })
+        })
+    }
+
+    // matrix();
+
+</script>
