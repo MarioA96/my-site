@@ -93,10 +93,10 @@ const ULSocialsStyles = cva({
         { presentationCharge }
     </div>
 
-    <ul id="content_left__socials" class={cx( "tw-content-socials", grid({columns: 8}), ULSocialsStyles() )}>
+    <ul id="content_left__socials" class={cx( "tw-content-socials", ULSocialsStyles() )}>
         {
             socials.map( social => (
-                <li class={cx( gridItem({ colSpan: 1 }) )}>
+                <li class={cx( "tw-socials-li" )}>
                     <Icon name={social.file} class="icon_logo"/> 
                 </li>
             ))
@@ -110,13 +110,16 @@ const ULSocialsStyles = cva({
     @reference "../../../styles/global.css";
     
     .tw-content-name {
-        @apply pl-4 pt-5
+        @apply pl-7 pt-7
     }
     .tw-content-title {
-        @apply leading-none pl-4 pt-2 mt-4 md:mt-0
+        @apply leading-none pl-7 pt-2 mt-4 md:mt-0
     }
-    .tw-content-socials {
-        @apply pl-4 mt-5 md:mt-8
+    ul.tw-content-socials {
+        @apply flex space-x-5 pl-7 pr-5 mt-5 md:mt-8;
+        & > li.tw-socials-li {
+            @apply flex align-middle justify-center p-2 border-solid border-1 border-gray-600 rounded-md;
+        }
     }
 
 </style>
