@@ -194,7 +194,7 @@ const CardMatrixStyles = cva({
         justify-content: center;
         align-items: center;
         font-size: 16px;
-        transition: color 0.3s ease;
+        transition: color 0.2s ease;
     }
 
 </style>
@@ -202,34 +202,44 @@ const CardMatrixStyles = cva({
 <script>
     
     const recuadro = document.getElementById('recuadro');
+    
     const colores = ['#a476ff', '#533d7f', '#2a213c'];
     const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*()_+';
 
     // Crear 100 elementos de caracteres
-    for (let i = 0; i < 100; i++) {
+    const elementosCaracter = Array.from({length: 100}, () => {
         const div = document.createElement('div');
         div.classList.add('caracter');
-        recuadro!.appendChild(div);
-    }
+        
+        // Establecer valor y color inicial
+        div.textContent = caracteres[Math.floor(Math.random() * caracteres.length)];
+        div.style.color = colores[Math.floor(Math.random() * colores.length)];
+        
+        // Función para cambiar de forma independiente
+        (div as HTMLDivElement & { cambiarCaracter: () => void }).cambiarCaracter = () => {
+            // Probabilidad de cambio (ajustable)
+            if (Math.random() < 0.3) {
+                div.textContent = caracteres[Math.floor(Math.random() * caracteres.length)];
+                div.style.color = colores[Math.floor(Math.random() * colores.length)];
+            }
+        };
+        
+        recuadro.appendChild(div);
 
-    const elementosCaracter = document.querySelectorAll('.caracter');
+        return div;
+    });
 
-    function cambiarCaracteres() {
+    // Intervalos independientes para cada carácter
+    function iniciarCambiosAleatorios() {
         elementosCaracter.forEach(elemento => {
-            // Cambiar carácter
-            const caracterAleatorio = caracteres[Math.floor(Math.random() * caracteres.length)];
-            elemento.textContent = caracterAleatorio;
+            // Intervalo aleatorio entre 100 y 1000 ms
+            const intervalo = Math.floor(Math.random() * 900) + 100;
 
-            // Cambiar color
-            const colorAleatorio = colores[Math.floor(Math.random() * colores.length)];
-            (elemento as HTMLElement).style.color = colorAleatorio;
+            setInterval(() => elemento.cambiarCaracter(), intervalo);
         });
+
     }
 
-    // Iniciar cambios cada 500 milisegundos
-    setInterval(cambiarCaracteres, 500);
-    
-    // Llamar inmediatamente para el estado inicial
-    cambiarCaracteres();
+    iniciarCambiosAleatorios();
 
 </script>
