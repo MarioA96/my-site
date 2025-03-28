@@ -110,9 +110,7 @@ const CardMatrixStyles = cva({
     </div>
 
     <div class={ cx(CardMatrixStyles({}), "tw-card-matrix") }>
-        <canvas id="canv" class={css({ height: '100%', width: '100%' })}>
-
-        </canvas>
+        <div id="recuadro"></div>
     </div>
 
 </div>
@@ -178,52 +176,60 @@ const CardMatrixStyles = cva({
 
     .tw-card-matrix {
         @apply mt-8 md:mt-0;
+
+        & #recuadro {
+            width: 100%;
+            height: 100%;
+            background-color: #161515;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            gap: 2px;
+            padding: 5px;
+        }
+    }
+
+    .caracter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        transition: color 0.3s ease;
     }
 
 </style>
 
 <script>
-    const canvas = document.getElementById('canv');
-
-    const ctx = canvas.getContext('2d');
-    const w = canvas.width = document.body.offsetWidth;
-    const h = canvas.height = document.body.offsetHeight;
-
-    const cols = Math.floor(h / 20) + 1;
-    const rows = Math.floor(w / 20) + 1;
-
-    const ypos = Array(rows).fill(0);
-    const xpos = Array(cols).fill(0);
     
-    ctx.fillStyle = '#161515'; //background
-    ctx.fillRect(0, 0, w, h);
+    const recuadro = document.getElementById('recuadro');
+    const colores = ['#a476ff', '#533d7f', '#2a213c'];
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*()_+';
 
-    const colors = ['#a476ff', '#533d7f', '#2a213c'];
-
-    ctx.font = '18pt monospace';
-
-    ypos.forEach((y, indy) => {
-        xpos.forEach((x, indx)=> {
-            ctx.fillStyle = colors[Math.floor(Math.random() * 3)]
-            const text = String.fromCharCode(Math.random() * 128);
-
-            const xl = indx * 20;
-            const yl = indy * 20;
-            ctx.fillText(text, xl, yl);
-        })
-    })
-
-    const matrix = () => {
-        ypos.forEach((y, indy) => {
-            xpos.forEach((x, indx)=> {
-                ctx.fillStyle = '#161515';
-                const xl = Math.random() * indx*20;
-                const yl = Math.random() * indy*20;
-                ctx.fillRect(xl, yl, xl + 20, yl + 20);
-            })
-        })
+    // Crear 100 elementos de caracteres
+    for (let i = 0; i < 100; i++) {
+        const div = document.createElement('div');
+        div.classList.add('caracter');
+        recuadro!.appendChild(div);
     }
 
-    // matrix();
+    const elementosCaracter = document.querySelectorAll('.caracter');
+
+    function cambiarCaracteres() {
+        elementosCaracter.forEach(elemento => {
+            // Cambiar carácter
+            const caracterAleatorio = caracteres[Math.floor(Math.random() * caracteres.length)];
+            elemento.textContent = caracterAleatorio;
+
+            // Cambiar color
+            const colorAleatorio = colores[Math.floor(Math.random() * colores.length)];
+            (elemento as HTMLElement).style.color = colorAleatorio;
+        });
+    }
+
+    // Iniciar cambios cada 500 milisegundos
+    setInterval(cambiarCaracteres, 500);
+    
+    // Llamar inmediatamente para el estado inicial
+    cambiarCaracteres();
 
 </script>
