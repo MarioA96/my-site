@@ -157,21 +157,21 @@ const CardMatrixStyles = cva({
     .tw-ul {
         @apply list-disc text-gray-300 ml-4 text-sm marker:text-[10px] leading-6;
     }
-    details ul {
-        opacity: 0;
+    details[open] summary~* {
+        animation: open .9s linear forwards;
     }
-    details[open] ul {
-        animation: fadeIn 0.9s linear forwards;
+    @keyframes open {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    details.closing summary~* {
+        animation: close .5s linear forwards;
+    }
+    @keyframes close {
+        0% { opacity: 1; }
+        100% { opacity: 0; }
     }
 
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
 
 
     .tw-card-matrix {
@@ -185,10 +185,9 @@ const CardMatrixStyles = cva({
             grid-template-columns: repeat(10, 1fr);
             grid-template-rows: repeat(10, 1fr);
             gap: 2px;
-            padding: 5px;
+            padding: 2px;
         }
     }
-
     .caracter {
         display: flex;
         justify-content: center;
@@ -200,14 +199,37 @@ const CardMatrixStyles = cva({
 </style>
 
 <script>
+
+    //Details tags animations
+    const details = document.querySelector("details");
+
+    details.addEventListener("click", (e) => {
+        if (details.hasAttribute("open")) { // since it's not closed yet, it's open!
+            e.preventDefault(); // stop the default behavior, meaning - the hiding
+            details.classList.add("closing"); // add a class which applies the animation in CSS
+        }
+    });
+
+    // when the "close" animation is over
+    details.addEventListener("animationend", (e) => {
+        if (e.animationName === "close") {
+            details.removeAttribute("open"); // close the element
+            details.classList.remove("closing"); // remove the animation
+        }
+    });
+
+</script>
+
+<script>
     
+    //MAtrix effect over a frame-window
     const recuadro = document.getElementById('recuadro');
     
     const colores = ['#a476ff', '#533d7f', '#2a213c'];
     const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*()_+';
 
     // Crear 100 elementos de caracteres
-    const elementosCaracter = Array.from({length: 100}, () => {
+    const elementosCaracter = Array.from({length: 110}, () => {
         const div = document.createElement('div');
         div.classList.add('caracter');
         
