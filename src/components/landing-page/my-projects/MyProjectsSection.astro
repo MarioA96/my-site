@@ -1,34 +1,75 @@
 ---
 import { cx, cva } from "../../../../styled-system/css";
 
+const colorPalette = {
+    primaryHeadingFontColor: 'rgb(163,118,254)',
+    primaryFontColor: 'white',
+    primaryCardBgColor: 'rgb(31,31,31)',
+    primaryMuteFontColor: 'rgb(152,152,152)'
+}
 
 const MyProjectsStyles = cva({
 
     base: {
         display: 'flex',
         flexDirection: 'column',
-        width: '70%', 
-        height: '400px', 
-        backgroundColor: 'red.200'
+        width: {
+            xsm: '90%'
+        }, 
+        height: {
+            xsm: 'fit-content'
+        }, 
+        // backgroundColor: 'red.200',
+        '& #upper_content_box': {
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100%',
+            height: '100px',
+            order: '1',
+            '& #upper-title': {
+                color: colorPalette.primaryHeadingFontColor,
+                fontSize: 'xl',
+                fontFamily: 'ubuntu_medium'
+            },
+            
+            '& #secondary-title': {
+                color: colorPalette.primaryFontColor,
+                fontSize: '3xl',
+                fontFamily: 'ubuntu_medium'
+            },
+
+        }
     }
 
 })
 
 ---
 
-<div id="my-projects__container" class={cx( MyProjectsStyles() )}>
+<div id="my-projects__container" class={cx( MyProjectsStyles(), 'tw-projects-container' )}>
 
-    <div id="upper_title_box" class="w-full h-[80px] bg-amber-400 order-1">
-        <div></div>
-        <div></div>
+    <div id="upper_content_box" class="tw-upper-content-box">
+        <span id="upper-title">My work</span>
+        <span id="secondary-title">Projects</span>
     </div>
-    <div id="projects_carousel_box" class="w-full h-[270px] bg-amber-700 order-2">
+    <!-- <div id="projects_carousel_box" class="w-full h-[270px] bg-amber-700 order-2">
         <div id="project_card">
-            aki ba un carruzel :) 
         </div>
     </div>
     <div id="footer_container" class="w-full h-[50px] bg-amber-50 order-3">
-
-    </div>
+    </div> -->
 
 </div>
+
+<style>
+
+    @reference "../../../styles/global.css";
+
+    /* Esta es una propiedad temporal para que no se vea en totalidad el contenido de la pagina */
+    .tw-projects-container {
+        @apply pl-4 mb-[150px];
+    }
+    .tw-upper-content-box {
+        @apply mb-[20px];
+    }
+
+</style>
