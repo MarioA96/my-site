@@ -1,5 +1,6 @@
 ---
 import { cx, cva } from "../../../../styled-system/css";
+// import { colorPalette } from "../../../styles/color-palette.ts";
 
 const colorPalette = {
     primaryHeadingFontColor: 'rgb(163,118,254)',
@@ -43,6 +44,19 @@ const MyProjectsStyles = cva({
 
 })
 
+const projectsCarouselStyles = cva({
+    base: {
+        order: '2',
+        width: {
+            xsm: '100%'
+        },
+        height: {
+            xsm: 'fit-content'
+        },
+        backgroundColor: 'amber.700'
+    }
+})
+
 ---
 
 <div id="my-projects__container" class={cx( MyProjectsStyles(), 'tw-projects-container' )}>
@@ -51,11 +65,23 @@ const MyProjectsStyles = cva({
         <span id="upper-title">My work</span>
         <span id="secondary-title">Projects</span>
     </div>
-    <!-- <div id="projects_carousel_box" class="w-full h-[270px] bg-amber-700 order-2">
-        <div id="project_card">
+    <div id="projects_carousel_box" class={cx( projectsCarouselStyles({}), 'tw-projects-carousel' )}>
+        
+        <div id="card" class="w-full md:w-[350px] h-[275px] bg-amber-300">
+            <div id="card-hero" class="flex justify-center align-middle w-full h-[200px] bg-amber-600">
+                <div class="w-full h-full p-3 bg-amber-50">
+
+                </div>
+            </div>
+            <div id="card-content" class="w-full h-[75px] bg-amber-800">
+                <div>
+
+                </div>
+            </div>
         </div>
+
     </div>
-    <div id="footer_container" class="w-full h-[50px] bg-amber-50 order-3">
+    <!-- <div id="footer_container" class="w-full h-[50px] bg-amber-50 order-3">
     </div> -->
 
 </div>
