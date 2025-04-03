@@ -1,5 +1,6 @@
 ---
 import { cx, cva } from "../../../../styled-system/css";
+import Card from "../../utils/Card.astro";
 // import { colorPalette } from "../../../styles/color-palette.ts";
 
 const colorPalette = {
@@ -67,18 +68,7 @@ const projectsCarouselStyles = cva({
     </div>
     <div id="projects_carousel_box" class={cx( projectsCarouselStyles({}), 'tw-projects-carousel' )}>
         
-        <div id="card" class="w-full md:w-[350px] h-[275px] bg-amber-300">
-            <div id="card-hero" class="flex justify-center align-middle w-full h-[200px] bg-amber-600">
-                <div class="w-full h-full p-3 bg-amber-50">
-
-                </div>
-            </div>
-            <div id="card-content" class="w-full h-[75px] bg-amber-800">
-                <div>
-
-                </div>
-            </div>
-        </div>
+        <Card />
 
     </div>
     <!-- <div id="footer_container" class="w-full h-[50px] bg-amber-50 order-3">
