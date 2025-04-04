@@ -1,16 +1,78 @@
 ---
+import { css, cva, cx } from "../../../styled-system/css";
+
+
+const colorPalette = {
+    backgroundPrimary: '#101010',
+    primaryHeadingFontColor: 'rgb(163,118,254)',
+    primaryFontColor: 'white',
+    primaryCardBgColor: 'rgb(31,31,31)',
+    primaryMuteFontColor: 'rgb(152,152,152)'
+}
+
+const CardStyles = cva({
+
+    base: {
+        width: {
+            xsm: '100%',
+            md: '350px'
+        },
+        height: '275px',
+        '& #card-hero': {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+            height: '200px',
+            backgroundColor: colorPalette.primaryCardBgColor,
+            borderRadius: '10px',
+        },
+        '& #card-content > #card-content-title': {
+            fontSize: '2xl',
+            color: 'white',
+            fontFamily: 'ubuntu_medium',
+        },
+        '& #card-content > #card-content-status': {
+            fontSize: '16px',
+            color: colorPalette.primaryMuteFontColor,
+            fontFamily: 'ubuntu_medium',
+        },
+    }
+
+});
 
 ---
 
-<div id="card" class="w-full md:w-[350px] h-[275px] bg-amber-300">
-    <div id="card-hero" class="flex justify-center align-middle w-full h-[200px] bg-amber-600">
-        <div class="w-full h-full p-3 bg-amber-50">
+<div id="card" class={ cx( CardStyles({}), "tw-card" ) }>
+    <div id="card-hero" class="tw-card-hero">
+        <div class="tw-card-hero-content">
 
         </div>
     </div>
-    <div id="card-content" class="w-full h-[75px] bg-amber-800">
-        <div>
-
-        </div>
+    <div id="card-content" class="tw-card-content">
+        <span id="card-content-title">Project1</span>
+        <span id="card-content-status">status_of_project</span>
     </div>
 </div>
+
+<style>
+
+    @reference "../../styles/global.css";
+
+    .tw-card-hero-content {
+        @apply flex bg-amber-50 rounded-lg;
+        height: calc(100% - 60px);
+        width: calc(100% - 30px);
+    }
+
+    .tw-card-content {
+        @apply flex flex-col w-full h-[75px] cursor-pointer;
+        & #card-content-title {
+            padding-left: 12px;
+        };
+        & #card-content-status {
+            padding-left: 12px;
+        }
+    }
+
+</style>
