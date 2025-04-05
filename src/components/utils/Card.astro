@@ -1,6 +1,7 @@
 ---
 import { css, cva, cx } from "../../../styled-system/css";
 
+const {cardInfo} = Astro.props;
 
 const colorPalette = {
     backgroundPrimary: '#101010',
@@ -60,8 +61,8 @@ const CardStyles = cva({
         </div>
     </div>
     <div id="card-content" class="tw-card-content">
-        <span id="card-content-title">Project1</span>
-        <span id="card-content-status">status_of_project</span>
+        <span id="card-content-title">{cardInfo.projectTitle}</span>
+        <span id="card-content-status">{cardInfo.status}</span>
     </div>
 </div>
 
