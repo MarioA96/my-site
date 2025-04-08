@@ -14,7 +14,11 @@ const HeroNavStyles = cva({
             xsm: '0px',
             md: '24px'
         },
-        backgroundColor: '#161515',
+        backgroundColor: 'rgba(22, 21, 21, 0.49)',
+        borderRadius: '16px',
+        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(5.9px)',
+        border: '1px solid rgba(22, 21, 21, 0.86)',
         '& ul[id^=ul__nav-list]': {
             display: 'flex',
             justifyContent: 'center',
@@ -31,10 +35,15 @@ const HeroNavStyles = cva({
             gap: '60px',
             "& li[id^='li__list_']": {
                 display: 'flex',
+                cursor: 'pointer',
                 '& .text-list': {
                     display: {
                         xsm: 'none',
                         md: 'flex'
+                    },
+                    color: {
+                        base: 'gray.500',
+                        _hover: 'white'
                     }
                 },
                 '& .box__icon-list': {
@@ -50,7 +59,7 @@ const HeroNavStyles = cva({
                     color: {
                         base: 'gray.500',
                         _hover: 'white'
-                    }
+                    },
                 },
             },
         }
