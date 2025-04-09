@@ -30,7 +30,7 @@ const MyProjectsStyles = cva({
             height: '100px',
             order: '1',
             '& #upper-title': {
-                color: colorPalette.primaryHeadingFontColor,
+                // color: colorPalette.primaryHeadingFontColor,
                 fontSize: 'xl',
                 fontFamily: 'ubuntu_medium'
             },
@@ -86,7 +86,7 @@ const cardsInfo = [
 <div id="my-projects__container" class={cx( MyProjectsStyles(), 'tw-projects-container' )}>
 
     <div id="upper_content_box" class="tw-upper-content-box">
-        <span id="upper-title">My work</span>
+        <span id="upper-title" class:list={["tw-upper-title shiny-text"]}>My work</span>
         <span id="secondary-title">Projects</span>
     </div>
     <div id="projects_carousel_box" class={cx( projectsCarouselStyles({}), 'tw-projects-carousel' )}>
@@ -111,6 +111,32 @@ const cardsInfo = [
     }
     .tw-upper-content-box {
         @apply mb-[20px];
+    }
+
+
+    span.tw-upper-title {
+        @apply text-[#7314d3a4]
+    }
+    span.shiny-text {
+        background: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0) 40%,
+            rgba(255, 255, 255, 0.9) 50%,
+            rgba(255, 255, 255, 0) 60%
+        );
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        display: inline-block;
+        animation: shine 5s linear infinite;
+    }
+    @keyframes shine {
+        0% {
+            background-position: 100%;
+        }
+        100% {
+            background-position: -100%;
+        }
     }
 
 </style>
