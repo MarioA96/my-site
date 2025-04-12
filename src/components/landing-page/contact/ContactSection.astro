@@ -1,37 +1,137 @@
 ---
-import { cx, cva } from "../../../../styled-system/css";
+import { cx, cva, css } from "../../../../styled-system/css";
 import { grid, gridItem } from "../../../../styled-system/patterns";
+
+
+const colorPalette = {
+    primaryHeadingFontColor: 'rgb(163,118,254)',
+    primaryFontColor: 'white',
+    primaryCardBgColor: 'rgb(31,31,31)',
+    primaryMuteFontColor: 'rgb(152,152,152)'
+}
 
 const ContactStyles = cva({
 
     base: {
-        width: '70%',
+        width: {
+            xsm: '90%',
+            md: '70%'
+        },
         height: '350px',
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: 'red.200',
-        '& #content_box': {
+        // backgroundColor: 'red.200',
+    }
+});
+
+const upperBoxStyles = cva({
+    base: {
+        display: 'flex',
+        order: '1',
+        width: '100%',
+        height: '80px',
+        flexDirection: 'column',
+        '& #upper_subject': {
+            fontFamily: 'ubuntu_medium',
+            fontSize: 'xl'
+        },
+        '& #upper_title': {
+            fontFamily: 'ubuntu_medium',
+            fontSize: '3xl',
+            color: colorPalette.primaryFontColor,
+        },
+    }
+});
+
+const contentBoxStyles = cva({
+    base: {
+        display: 'flex',
+        order: '2',
+        width: '100%',
+        height: {
+            xsm: 'fit-content',
+            md: '270px'
+        },
+        flexDirection: {
+            xsm: 'column',
+            md: 'row'
+        },
+        // backgroundColor: 'amber.300',
+        '& #info_content__box': {
             display: 'flex',
-            order: '2',
+            order: '1',
             width: '100%',
-            height: {
-                xsm: 'fit-content',
-                md: '270px'
+            height: 'fit-content',
+            flexDirection: {
+                xsm: 'column',
+                md: 'row'
             },
-            backgroundColor: 'amber.300'
+            color: colorPalette.primaryMuteFontColor,
+            fontFamily: 'ubuntu_medium'
+        },
+        '& #form_content__box': {
+            display: 'flex',
+            order: '2'
         }
     }
-
 });
+
 ---
 
 <div id="contact__container" class={cx( ContactStyles() )}>
 
-    <div id="upper_box" class="flex w-full h-[80px] flex-col bg-amber-300 order-1">
+    <div id="upper_box" class={cx( upperBoxStyles({}) )}>
+        <span id="upper_subject" class:list={[ "tw-upper-title shiny-text" ]}>Charlemos</span>
+        <span id="upper_title">Contacto</span>
     </div>
-    <div id="content_box" class={ cx( grid({ columns: 12 }) )}>
-        <div id="info_content__box" class={cx( gridItem({ colSpan: 6 }), "w-full h-full bg-amber-700" )}></div>
-        <div id="form_content_box" class={cx( gridItem({ colSpan: 6 }), "w-full h-full bg-amber-900" )}></div>
+    <div id="content_box" class={ cx( contentBoxStyles({}), "tw-content-box" )}>
+        <div id="info_content__box">
+            <span id="info_content__description" class="text-[16px]">
+                ¿Tienes alguna pregunta o preyecto en mente? Contactame.
+            </span>
+            <span id="info_content__location" class="flex">
+                Dirección:&nbsp;&nbsp;<p class="text-white">{"Aqui va una direccion"}</p>
+            </span>
+        </div>
+        <div id="form_content__box">
+            ALGO MAS
+        </div>
     </div>
 
 </div>
+
+
+<style>
+
+    @reference "../../../styles/global.css";
+
+    span.tw-upper-title {
+        @apply text-[#9c00fda4]
+    }
+    span.shiny-text {
+        background: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0) 40%,
+            rgba(255, 255, 255, 0.9) 50%,
+            rgba(255, 255, 255, 0) 60%
+        );
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        display: inline-block;
+        animation: shine 5s linear infinite;
+    }
+    @keyframes shine {
+        0% {
+            background-position: 100%;
+        }
+        100% {
+            background-position: -100%;
+        }
+    }
+
+    #content_box.tw-content-box {
+        margin-top: 20px;
+    }
+
+</style>
