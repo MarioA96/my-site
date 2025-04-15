@@ -71,7 +71,26 @@ const contentBoxStyles = cva({
         },
         '& #form_content__box': {
             display: 'flex',
-            order: '2'
+            order: '2',
+            backgroundColor: 'amber.400',
+            width: {
+                xsm: '100%'
+            },
+            height: {
+                xsm: 'fit-content'
+            },
+            '& button#submit_button': {
+                display: 'flex',
+                width: {
+                    xsm: '100%'
+                },
+                height: '45px',
+                rounded: 'sm',
+                cursor: 'pointer',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontFamily: 'ubuntu_regular'
+            }
         }
     }
 });
@@ -84,18 +103,20 @@ const contentBoxStyles = cva({
         <span id="upper_subject" class:list={[ "tw-upper-title shiny-text" ]}>Charlemos</span>
         <span id="upper_title">Contacto</span>
     </div>
-    <div id="content_box" class={ cx( contentBoxStyles({}), "tw-content-box" )}>
+    <div id="content_box" class={ cx( contentBoxStyles({}), "tw-content_box" )}>
         <div id="info_content__box">
             <span id="info_content__description" class="text-[16px]">
                 ¿Tienes alguna pregunta o preyecto en mente? Contactame.
             </span>
-            <span id="info_content__location" class="flex">
+            <span id="info_content__location" class="flex tw-info_content__location">
                 Dirección:&nbsp;&nbsp;<p class="text-white">{"Aqui va una direccion"}</p>
             </span>
         </div>
-        <div id="form_content__box">
-            ALGO MAS
-        </div>
+        <form id="form_content__box" class="tw-form_content__box">
+            <button id="submit_button" type="submit">
+                Enviar
+            </button>
+        </form>
     </div>
 
 </div>
@@ -130,8 +151,34 @@ const contentBoxStyles = cva({
         }
     }
 
-    #content_box.tw-content-box {
+    #content_box.tw-content_box {
         margin-top: 20px;
     }
 
+    .tw-info_content__location {
+        margin-top: 20px;
+    }
+
+    .tw-form_content__box {
+        margin-top: 20px;
+        & button {
+            background-color: #191919;
+            color: #8c8c8c;
+        };
+        & button:hover {
+            background-color: #1f1f1f;
+            color: #dfdfdf;
+        }
+    }
+
 </style>
+
+<script>
+
+    const form = document.getElementById('form_content__box');
+
+    form?.addEventListener( 'submit', (e) => {
+        e.preventDefault();
+    } );
+
+</script>
