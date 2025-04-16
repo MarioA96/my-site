@@ -1,24 +1,49 @@
 ---
-import { cx, cva } from "../../../../styled-system/css";
+import { Icon } from "astro-icon/components";
+import { cx, cva, css } from "../../../../styled-system/css";
 import { grid, gridItem } from "../../../../styled-system/patterns";
 
 const AdditionalInfoStyles = cva({
 
     base: {
-        width: '70%',
-        height: '220px',
         display: 'flex',
-        flexDirection: 'row',
-        backgroundColor: 'red.200'
+        flexDirection: {
+            xsm: 'column',
+            md: 'row'
+        },
+        width: '70%',
+        height: 'fit-content',
+        '& .additionalInfo__content': {
+            display: 'flex',
+            flexDirection: 'row',
+            color: '#979797',
+            fontFamily: 'ubuntu_light',
+            fontSize: '14px',
+        }
     }
 
 });
 ---
 
-<div id="additionalInfo__container" class={cx( AdditionalInfoStyles(), grid({ columns: 12 }) )}>
-
-    <!-- <div id="contact_content__box" class={cx( gridItem({ colSpan: 4 }), "w-full h-full bg-amber-500" )}></div>
-    <div id="builtInfo_content_box" class={cx( gridItem({ colSpan: 4 }), "w-full h-full bg-amber-700" )}></div>
-    <div id="player_content_box" class={cx( gridItem({ colSpan: 4 }), "w-full h-full bg-amber-900" )}></div> -->
-
+<div id="additionalInfo__container" class={cx( AdditionalInfoStyles(), "tw-additionalInfo__container" )}>
+    <span class="additionalInfo__content">
+        Built with&nbsp;<Icon name="logos/skills/astro_gray" class="h-[22px] w-[22px]"/>&nbsp;Astro
+    </span>
+    <span class="additionalInfo__content">
+        Styled with&nbsp;<Icon name="logos/skills/pandacss_gray" class="h-[22px] w-[22px]"/>&nbsp;PandaCss
+    </span>
+    <span id="content_styled_additional" class="additionalInfo__content">
+        And&nbsp;<Icon name="logos/skills/tailwindcss_gray" class="h-[22px] w-[22px]"/>&nbsp;TailwindCss
+    </span>
+    <span class="additionalInfo__content">
+        Deployed on &nbsp;<Icon name="logos/skills/github_gray" class="h-[18px] w-[18px]"/>&nbsp;GitPages
+    </span>
 </div>
+
+<style>
+
+    .additionalInfo__content {
+        margin-top: 10px;
+    }
+
+</style>
