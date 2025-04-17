@@ -68,10 +68,10 @@ const ContainerNavbarStyles = cva({
 			<AdditionalInfo />
 		</section>
 
-		<footer id="footer" class="flex w-full h-fit my-10 bg-[#161515] justify-center order-7">
-			<div class="footer_content__box" class="h-[50px] w-full align-middle">
-				<p class={cx( css({ color: 'gray.400', fontFamily: 'ubuntu_regular' }) )}>
-					Copyright 2025
+		<footer id="footer" class="flex w-full h-fit my-10 bg-[#a64e4e] order-7 justify-center">
+			<div class="footer_content__box" class={cx("flex align-middle bg-amber-400", css({ height: 'fit-content', width: { xsm: '50%', md: '100%' } }))}>
+				<p class={cx( css({ width: '100%', height: 'fit-content', color: 'gray.400', fontFamily: 'ubuntu_light', fontSize: '14px' }) )}>
+					Copyright © 2025 Oscar Hernandez. All rights reserved.
 				</p>
 			</div>
 		</footer>
@@ -106,6 +106,10 @@ const ContainerNavbarStyles = cva({
 	}
 
 	#additional-info {
-		@apply mt-10 mb-20;
+		@apply mt-10;
+	}
+
+	#footer {
+		@apply mt-10 mb-30;
 	}
 </style>
