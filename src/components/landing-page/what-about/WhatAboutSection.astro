@@ -182,10 +182,11 @@ const CardMatrixStyles = cva({
             height: 100%;
             background-color: #161515;
             display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            grid-template-rows: repeat(10, 1fr);
-            gap: 2px;
-            padding: 2px;
+            grid-template-columns: repeat(16, 1fr);
+            grid-template-rows: repeat(16, 1fr);
+            gap: 0px;
+            padding: 5px;
+            overflow: hidden;
         }
     }
     .caracter {
@@ -193,6 +194,7 @@ const CardMatrixStyles = cva({
         justify-content: center;
         align-items: center;
         font-size: 16px;
+        line-height: 1;
         transition: color 0.2s ease;
     }
 
@@ -203,7 +205,7 @@ const CardMatrixStyles = cva({
     //Details tags animations
     const details = document.querySelector("details");
 
-    details.addEventListener("click", (e) => {
+    details?.addEventListener("click", (e) => {
         if (details.hasAttribute("open")) { // since it's not closed yet, it's open!
             e.preventDefault(); // stop the default behavior, meaning - the hiding
             details.classList.add("closing"); // add a class which applies the animation in CSS
@@ -211,7 +213,7 @@ const CardMatrixStyles = cva({
     });
 
     // when the "close" animation is over
-    details.addEventListener("animationend", (e) => {
+    details?.addEventListener("animationend", (e) => {
         if (e.animationName === "close") {
             details.removeAttribute("open"); // close the element
             details.classList.remove("closing"); // remove the animation
@@ -229,7 +231,7 @@ const CardMatrixStyles = cva({
     const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*()_+';
 
     // Crear 100 elementos de caracteres
-    const elementosCaracter = Array.from({length: 110}, () => {
+    const elementosCaracter = Array.from({length: 256}, () => {
         const div = document.createElement('div');
         div.classList.add('caracter');
         
@@ -246,7 +248,7 @@ const CardMatrixStyles = cva({
             }
         };
         
-        recuadro.appendChild(div);
+        recuadro?.appendChild(div);
 
         return div;
     });
