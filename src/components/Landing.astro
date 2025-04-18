@@ -68,11 +68,11 @@ const ContainerNavbarStyles = cva({
 			<AdditionalInfo />
 		</section>
 
-		<footer id="footer" class="flex w-full h-fit my-10 bg-[#a64e4e] order-7 justify-center">
-			<div class="footer_content__box" class={cx("flex align-middle bg-amber-400", css({ height: 'fit-content', width: { xsm: '50%', md: '100%' } }))}>
-				<p class={cx( css({ width: '100%', height: 'fit-content', color: 'gray.400', fontFamily: 'ubuntu_light', fontSize: '14px' }) )}>
-					Copyright © 2025 Oscar Hernandez. All rights reserved.
-				</p>
+		<footer id="footer" class="flex w-full h-fit my-10 order-7 justify-center">
+			<div class="footer_content__box" class:list={["flex align-middle", css({ height: 'fit-content', width: { xsm: '70%', md: '100%' } })]}>
+				<div class={cx( css({ width: '100%', height: 'fit-content', color: '#888888', fontFamily: 'ubuntu_light', fontSize: '15px' }) )}>
+					Based on <span class="inline-block text-purple-600 w-fit h-fit cursor-pointer"><a href="https://oscarhernandez.vercel.app/" target="_blank" rel="noopener">Oscar Hernandez design</a></span> copyright © 2025 replicated from the scratch by Mario A. Q. S. All rights reserved.
+				</div>
 			</div>
 		</footer>
 
@@ -110,6 +110,6 @@ const ContainerNavbarStyles = cva({
 	}
 
 	#footer {
-		@apply mt-10 mb-30;
+		@apply mt-15 mb-30;
 	}
 </style>
