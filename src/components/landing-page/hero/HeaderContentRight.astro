@@ -18,11 +18,12 @@ const ContentRightStyles = cva({
                 md: '100%'
             },
             height: 'fit-content',
-            color: 'gray.400',
+            color: '#818181',
             fontWeight: '500',
-            fontFamily: 'ubuntu_light_italic',
+            fontFamily: 'ubuntu_light',
             fontSize: {
                 xsm: '16px',
+                sm: '20px',
                 md: '24px'
             },
             paddingLeft: '20px',
@@ -34,7 +35,7 @@ const ContentRightStyles = cva({
 
 <div id="content_right__box" class={cx( gridItem({ colSpan: 8 }), ContentRightStyles() )}>
     <p id="content_right__text" class="tw-content-text">
-        Para transformar ideas en realidad usando la mejor tecnologia para el <span class="text-color-primary shiny-text">{textFrontend}</span> 
+        Dando vida a las ideas usando la mejor tecnologia para el <span class="text-color-primary shiny-text">{textFrontend}</span> 
         y <span class="text-color-secondary shiny-text">{textBackend}</span>, cumpliendo metas, un paso a la vez
     </p>
 </div>
