@@ -64,14 +64,14 @@ const ContainerNavbarStyles = cva({
 			<ContactSection />
 		</section>
 
-		<section id="additional-info" class="flex w-full h-fit mt-14 bg-[#161515] justify-center order-6">
+		<section id="additional-info" class="flex w-full h-fit mt-14 bg-[#161515] order-6">
 			<AdditionalInfo />
 		</section>
 
 		<footer id="footer" class="flex w-full h-fit my-10 order-7 justify-center">
-			<div class="footer_content__box" class:list={["flex align-middle", css({ height: 'fit-content', width: { xsm: '70%', md: '100%' } })]}>
+			<div class="footer_content__box" class:list={["flex align-middle", css({ height: 'fit-content', width: { xsm: '70%', md: 'fit-content' } })]}>
 				<div class={cx( css({ width: '100%', height: 'fit-content', color: '#888888', fontFamily: 'ubuntu_light', fontSize: '15px' }) )}>
-					Based on <span class="inline-block text-purple-600 w-fit h-fit cursor-pointer"><a href="https://oscarhernandez.vercel.app/" target="_blank" rel="noopener">Oscar Hernandez design</a></span> copyright © 2025 replicated from the scratch by Mario A. Q. S. All rights reserved.
+					Based on <span class="inline-block text-purple-600 w-fit h-fit cursor-pointer"><a href="https://oscarhernandez.vercel.app/" target="_blank" rel="noopener">Oscar Hernandez design</a></span> copyright © 2025 replicated and modified from the scratch by Mario A. Q. S. All rights reserved.
 				</div>
 			</div>
 		</footer>
@@ -115,6 +115,7 @@ const ContainerNavbarStyles = cva({
 	}
 
 	#additional-info {
+		justify-content: center;
 		@apply mt-10;
 	}
 
