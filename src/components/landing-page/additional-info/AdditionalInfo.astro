@@ -11,7 +11,11 @@ const AdditionalInfoStyles = cva({
             xsm: 'column',
             md: 'row'
         },
-        width: '70%',
+        width: {
+            xsm: '70%',
+            md: 'fit-content'
+        },
+        // backgroundColor: 'red.500',
         height: 'fit-content',
         '& .additionalInfo__content': {
             display: 'flex',
