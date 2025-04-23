@@ -1,7 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
 import { css, cx, cva } from "../../../../styled-system/css";
-import { grid, gridItem } from "../../../../styled-system/patterns";
 
 const WhatIDoStyles = cva({
 
@@ -131,7 +130,7 @@ const CardMatrixStyles = cva({
     }
 
     .tw-summary {
-        @apply flex text-[18px] text-white p-2;
+        @apply flex text-[18px] text-[#b6b6b6] p-2;
         align-items: center;
 
         & .tw-summary__icon {
@@ -155,7 +154,7 @@ const CardMatrixStyles = cva({
     }
 
     .tw-ul {
-        @apply list-disc text-gray-300 ml-4 text-sm marker:text-[10px] leading-6;
+        @apply list-disc text-[#818181] ml-4 text-sm marker:text-[10px] leading-6;
     }
     details[open] summary~* {
         animation: open .9s linear forwards;
