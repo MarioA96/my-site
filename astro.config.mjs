@@ -6,6 +6,8 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://marioa96.github.io/',
+  base: 'my-site',
   vite: {
       plugins: [tailwindcss()],
   },
