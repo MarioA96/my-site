@@ -60,8 +60,9 @@ const projectsCarouselStyles = cva({
             xsm: '100%'
         },
         height: {
-            xsm: 'fit-content'
-        }
+            xsm: 'fit-content',
+            md: 'fit-content'
+        },
     }
 });
 
@@ -73,10 +74,8 @@ const footerStyles = cva({
         height: '50px',
         justifyContent: 'center',
         alignItems: 'center',
-        color: 'gray.400',
         _hover: {
             backgroundColor: 'rgba(125,125,125, 0.3)',
-            color: 'white',
             cursor: 'pointer'
         },
         '& span#footer_content': {
@@ -87,21 +86,35 @@ const footerStyles = cva({
     }
 })
 
-const cardsInfo = [
+interface CardInfo {
+    projectTitle: string;
+    status: string;
+    lastUpdate: string;
+    url: string;
+    imageUrl: string;
+}
+
+const cardsInfo: CardInfo[] = [
     {
-        projectTitle: 'Project_1',
+        projectTitle: 'Multi-Step Form using Astro, TS, Svelte, PandaCSS, Zod, NanoStores.',
+        status: 'Finished',
+        lastUpdate: 'Submitted 6 months ago',
+        url: 'https://www.frontendmentor.io/solutions/multi-step-form-using-astro-ts-svelte-pandacss-zod-nanostores-lL2g_GewLZ',
+        imageUrl: '/assets/images/proy_1.webp',
+    },
+    {
+        projectTitle: 'Interactive Card Details page using Astro, Svelte, Panda-css',
+        status: 'Finished',
+        lastUpdate: 'Submitted 7 months ago',
+        url: 'https://www.frontendmentor.io/solutions/interactive-card-details-page-using-astro-svelte-panda-css-mjaMxo0z7J',
+        imageUrl: '/assets/images/proy_2.webp',
+    },
+    {
+        projectTitle: 'Interactive Comment Section Astro/React/TanstackQuery/PandaCss/Shadcn',
         status: 'Work In Progress',
-        lastUpdate: new Date().getDate(),
-    },
-    {
-        projectTitle: 'Project_2',
-        status: 'To be Annunced',
-        lastUpdate: new Date().getDate(),
-    },
-    {
-        projectTitle: 'Project_3',
-        status: 'Deployed',
-        lastUpdate: new Date().getDate(),
+        lastUpdate: 'Submitted 8 months ago',
+        url: 'https://www.frontendmentor.io/solutions/interactive-comment-section-astroreacttanstackquerypandacssshadcn-Tjp-IUDuXD',
+        imageUrl: '/assets/images/proy_3.webp',
     }
 ]
 
@@ -121,17 +134,21 @@ const cardsInfo = [
         }
     </div>
 
-    <div id="footer_container" class={cx( footerStyles({}) )}>
+    <a href="https://github.com/MarioA96" target="_blank" rel="noopener" id="footer_container" class={cx( footerStyles({}) )}>
         <span id="footer_content">
             Más proyectos en &nbsp;&nbsp;<Icon id="footer_content__icon" name="logos/github" class="h-[25px] w-[25px]"/>
         </span>
-    </div>
+    </a>
 
 </div>
 
 <style>
 
     @reference "../../../styles/global.css";
+
+    .tw-projects-container {
+        @apply space-y-2;
+    }
 
     .tw-upper-content-box {
         @apply mb-[20px];
@@ -166,6 +183,11 @@ const cardsInfo = [
     #footer_container {
         @apply rounded-3xl border border-solid;
         border-color: #303030;
+        color: rgb(130, 130, 130);
+        margin-top: 10px;
+    }
+    #footer_container:hover {
+        color: white;
     }
 
 </style>
