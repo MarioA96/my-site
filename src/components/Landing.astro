@@ -29,18 +29,14 @@ const ContainerNavbarStyles = cva({
 			xsm: 'inherit',
 			md: '0'
 		},
-		width: {
-			xsm: '100%'
-		},
-		height: 'fit-content',
 	},
 })
 ---
 
 <div id="container">
-	<main class="bg-[#161515] flex flex-col">
+	<main class="bg-[#161515] flex flex-col h-fit w-full">
 
-		<div id="container-navbar" class={cx( ContainerNavbarStyles({}) )}>
+		<div id="container-navbar" class:list={["h-fit w-full", ContainerNavbarStyles({})]}>
 			<HeroNavbar />
 		</div>
 
@@ -85,12 +81,6 @@ const ContainerNavbarStyles = cva({
 	#container {
 		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
 		height: fit-content;
-	}
-
-	main {
-		width: 100%;
-		height: fit-content;
-		display: flex;
 	}
 
 	section {

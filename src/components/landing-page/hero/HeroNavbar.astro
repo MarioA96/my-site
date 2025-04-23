@@ -5,7 +5,10 @@ import { cva, cx } from "../../../../styled-system/css";
 const HeroNavStyles = cva({
     base: {
         display: 'flex',
-        width: '100%',
+        width: {
+            xsm: '100%',
+            md: '100%'
+        },
         height: {
             xsm: '55px',
             md: '56px'
