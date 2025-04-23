@@ -72,25 +72,31 @@ const HeroNavStyles = cva({
 <nav id="hero__nav" class={cx( HeroNavStyles({}) )}>
     <ul id="ul__nav-list" class:list={["ul-tw-styles"]}>
         <li id="li__list_Home">
-            <span class="text-list">HOME</span>
-            <div class:list={["box__icon-list"]}>
-                <Icon class="icon-list" name="logos/navbar/home" class="h-7 w-7" />
-                <span>Home</span>
-            </div>
+            <a href="#hero">
+                <span class="text-list">HOME</span>
+                <div class:list={["box__icon-list"]}>
+                    <Icon class="icon-list" name="logos/navbar/home" class="h-7 w-7" />
+                    <span>Home</span>
+                </div>
+            </a>
         </li>
         <li id="li__list_Projects">
-            <span class="text-list">PROJECTS</span>
-            <div class="box__icon-list">
-                <Icon class="icon-list" name="logos/navbar/folder" class="h-7 w-7" />
-                <span>Projects</span>
-            </div>
+            <a href="#my-projects">
+                <span class="text-list">PROYECTOS</span>
+                <div class="box__icon-list">
+                    <Icon class="icon-list" name="logos/navbar/folder" class="h-7 w-7" />
+                    <span>Proyectos</span>
+                </div>
+            </a>
         </li>
         <li id="li__list_Contact">
-            <span class="text-list">CONTACT</span>
-            <div class="box__icon-list">
-                <Icon class="icon-list" name="logos/navbar/cursor" class="h-7 w-7" />
-                <span>Contact</span>
-            </div>
+            <a href="#my-contact">
+                <span class="text-list">CONTACTO</span>
+                <div class="box__icon-list">
+                    <Icon class="icon-list" name="logos/navbar/cursor" class="h-7 w-7" />
+                    <span>Contacto</span>
+                </div>
+            </a>
         </li>
     </ul> 
 </nav>
