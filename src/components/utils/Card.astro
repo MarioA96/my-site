@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { css, cva, cx } from "../../../styled-system/css";
+import { lazy } from 'astro:schema';
 
 const {cardInfo} = Astro.props;
 
@@ -23,8 +25,7 @@ const CardStyles = cva({
             md: '350px'
         },
         height: {
-            xsm: '275px',
-            sm: '320px'
+            xsm: 'fit-content'
         },
         '& #card-hero': {
             display: 'flex',
@@ -33,17 +34,19 @@ const CardStyles = cva({
             width: '100%',
             height: {
                 xsm: '200px',
-                sm: '260px'
+                sm: '260px',
             },
             backgroundColor: colorPalette.primaryCardBgColor,
             borderRadius: '10px',
         },
         '& #card-content > #card-content-title': {
-            fontSize: '2xl',
+            display: 'flex',
+            fontSize: 'xl',
             color: 'white',
             fontFamily: 'ubuntu_medium',
         },
         '& #card-content > #card-content-status': {
+            display: 'flex',
             fontSize: '16px',
             color: colorPalette.primaryMuteFontColor,
             fontFamily: 'ubuntu_medium',
@@ -57,13 +60,20 @@ const CardStyles = cva({
 <div id="card" class={ cx( CardStyles({}), "tw-card" ) }>
     <div id="card-hero" class="tw-card-hero">
         <div class="tw-card-hero-content">
-
+            <Image 
+                src={cardInfo.imageUrl} 
+                alt={cardInfo.projectTitle} 
+                width={100}
+                height={100}
+                loading=lazy
+                class="image-full"
+            />
         </div>
     </div>
-    <div id="card-content" class="tw-card-content">
+    <a href={cardInfo.url} id="card-content" class="tw-card-content" target="_blank" rel="noopener">
         <span id="card-content-title">{cardInfo.projectTitle}</span>
         <span id="card-content-status">{cardInfo.status}</span>
-    </div>
+    </a>
 </div>
 
 <style>
@@ -77,13 +87,19 @@ const CardStyles = cva({
     }
 
     .tw-card-content {
-        @apply flex flex-col w-full h-[75px] cursor-pointer;
+        @apply flex flex-col w-full h-fit cursor-pointer hover:bg-[#323232];
         & #card-content-title {
             padding-left: 12px;
         };
         & #card-content-status {
             padding-left: 12px;
         }
+    }
+
+    .image-full {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
 </style>
