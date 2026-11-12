@@ -85,13 +85,13 @@ const formBoxStyles = cva({
 
     <div id="upper_box" class={cx( upperBoxStyles({}) )}>
         <span id="upper_subject" class:list={[ "tw-upper-title shiny-text" ]}>Charlemos</span>
-        <span id="upper_title">Contacto</span>
+        <h2 id="upper_title">Contacto</h2>
         <div id="info_content__box">
             <span id="info_content__description" class="flex text-[16px]">
                 ¿Tienes alguna pregunta o proyecto en mente? Contactame.
             </span>
             <span id="info_content__location" class="flex tw-info_content__location">
-                Dirección:&nbsp;&nbsp;<p class="text-[#dfdfdf]">Estado de México, México</p>
+                Dirección:&nbsp;&nbsp;<span class="text-[#dfdfdf]">Estado de México, México</span>
             </span>
         </div>
     </div>
@@ -108,7 +108,7 @@ const formBoxStyles = cva({
     @reference "../../../styles/global.css";
 
     span.tw-upper-title {
-        @apply text-[#9c00fda4]
+        @apply text-[#a855f7]
     }
     span.shiny-text {
         background: linear-gradient(
