@@ -48,10 +48,12 @@ const ContentRightStyles = cva({
     }
 
     .text-color-primary {
-        @apply text-[#d314b3a4] /* Adjust this color to change intensity/style */
+        /* solid: 5.17:1 on #161515 (was #d314b3a4 ≈ 2.2:1 — WCAG 1.4.3 fail) */
+        @apply text-[#ec4899];
     }
     .text-color-secondary {
-        @apply text-[#2e9df3a4];
+        /* solid: 7.17:1 on #161515 (was #2e9df3a4 ≈ 3.3:1) */
+        @apply text-[#60a5fa];
     }
     .shiny-text {
         background: linear-gradient(
@@ -78,6 +80,12 @@ const ContentRightStyles = cva({
 
     .shiny-text.disabled {
         animation: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .shiny-text {
+            animation: none;
+        }
     }
 
 </style>
