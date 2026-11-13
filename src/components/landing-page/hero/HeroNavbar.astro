@@ -62,7 +62,10 @@ const HeroNavStyles = cva({
                     fontWeight: '500',
                     fontFamily: 'ubuntu_medium',
                     color: {
-                        base: 'gray.500',
+                        // gray.500 (#6b7280) only reaches 3.76:1 on the dark
+                        // hero bg — below WCAG AA 4.5:1 at 16px. #8d8d8d
+                        // matches .text-list's desktop color (5.49:1).
+                        base: '#8d8d8d',
                         _hover: 'white'
                     },
                 },
