@@ -88,9 +88,9 @@ const ULSocialsStyles = cva({
 
 <div id="content_left" class:list={[ gridItem({ colSpan: 4 }), ContentLeftStyles() ]}>
     
-    <div id="content_left__name" class="tw-content-name">
+    <h1 id="content_left__name" class="tw-content-name">
         { presentationName }
-    </div>
+    </h1>
 
     <div id="content_left__title" class="tw-content-title">
         { presentationCharge }
@@ -100,8 +100,8 @@ const ULSocialsStyles = cva({
         {
             socials.map( (social, i) => (
                 <li id={`${social.name}`} class:list={[ "tw-socials-li", "hover:cursor-pointer", `${i}_li` ]}>
-                    <a href={`${social.url}`} target="_blank" rel="noopener" class="flex h-full w-full justify-center">
-                        <Icon id={`${i}_icon`} name={social.file} class="icon_logo"/> 
+                    <a href={`${social.url}`} target="_blank" rel="noopener" aria-label={social.name} class="flex h-full w-full justify-center">
+                        <Icon id={`social_icon_${social.name}`} name={social.file} aria-hidden="true" class="icon_logo"/> 
                     </a>
                 </li>
             ))
