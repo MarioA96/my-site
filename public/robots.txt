@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marioa96.github.io/my-site/sitemap.xml
