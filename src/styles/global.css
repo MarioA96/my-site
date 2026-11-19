@@ -1,1 +1,17 @@
+/* Full cascade layer order, declared BEFORE the Tailwind import so it wins
+   the race: the first mention of a layer name fixes its position; later
+   @layer blocks and statements only append names that are still missing.
+
+   Why this line matters: @pandacss/dev/postcss (postcss.config.cjs) injects
+   Panda's preflight — margin 0, padding 0, border-width 0 on every element —
+   into the "reset" layer. If reset is first mentioned AFTER Tailwind has
+   already opened its "utilities" block, it gets appended above utilities and
+   silently zeroes every standalone spacing/border utility class site-wide
+   (scoped @apply rules keep working, which hides the damage).
+
+   Order: theme, reset, base, tokens, recipes, components, utilities.
+   utilities MUST stay last — unlayered CSS (component style blocks) still
+   outranks every layer, so @apply-driven styles are unaffected. */
+@layer theme, reset, base, tokens, recipes, components, utilities;
+
 @import "tailwindcss";
