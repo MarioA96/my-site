@@ -65,19 +65,19 @@ const CardMatrixStyles = cva({
 });
 ---
 
-<div id="container" class={cx( WhatIDoStyles({}) )}>
+<div id="what-about-box" class={cx( WhatIDoStyles({}) )}>
 
     <div id="whatIDo_container">
         <div id="whatIDo_title__container" class="flex w-full h-[25%] items-center">
-            <p id="title_content">
+            <h2 id="title_content">
                 ¿Qué es lo que hago?
-            </p>
+            </h2>
         </div>
         <div id="whatIDo_content" class="w-full h-fit">
             <details class={cx( DetailsStyles({}), "tw-details" )} name="exclusive" open>
                 <summary class:list={["tw-summary", "flex",]}>
                     <Icon name="utils/window" class="tw-summary__icon"/>
-                    <p class:list={["tw-summary"]}>Desarrollo Web</p>
+                    <span class:list={["tw-summary"]}>Desarrollo Web</span>
                 </summary>
                 <ul class:list={["tw-ul"]}>
                     <li>SPA (Single Page Application)</li>
@@ -88,7 +88,7 @@ const CardMatrixStyles = cva({
             <details class={cx( DetailsStyles({}), "tw-details" )} name="exclusive">
                 <summary class:list={["tw-summary"]}>
                     <Icon name="utils/mobile" class="tw-summary__icon"/>
-                    <p class:list={["tw-summary"]}>Desarrollo Móvil</p>
+                    <span class:list={["tw-summary"]}>Desarrollo Móvil</span>
                 </summary>
                 <ul class:list={["tw-ul"]}>
                     <li>Desarrollo móvil amigable</li>
@@ -98,7 +98,7 @@ const CardMatrixStyles = cva({
             <details class={cx( DetailsStyles({}), "tw-details" )} name="exclusive">
                 <summary class:list={["tw-summary"]}>
                     <Icon name="utils/tent" class="tw-summary__icon"/>
-                    <p class:list={["tw-summary"]}>Desarrollo del UI</p>
+                    <span class:list={["tw-summary"]}>Desarrollo del UI</span>
                 </summary>
                 <ul class:list={["tw-ul"]}>
                     <li>Desarrollo bajo pre prototipo UI</li>
@@ -109,7 +109,8 @@ const CardMatrixStyles = cva({
     </div>
 
     <div class={ cx(CardMatrixStyles({}), "tw-card-matrix") }>
-        <div id="recuadro"></div>
+        <!-- decorative flicker effect: hide the random characters from AT -->
+        <div id="recuadro" aria-hidden="true"></div>
     </div>
 
 </div>
@@ -118,7 +119,7 @@ const CardMatrixStyles = cva({
 
     @reference "../../../styles/global.css";
 
-    #container {
+    #what-about-box {
         @apply -mt-5 md:mt-0
     }
 
@@ -154,7 +155,7 @@ const CardMatrixStyles = cva({
     }
 
     .tw-ul {
-        @apply list-disc text-[#818181] ml-4 text-sm marker:text-[10px] leading-6;
+        @apply list-disc text-[#9c9c9c] ml-4 text-sm marker:text-[10px] leading-6;
     }
     details[open] summary~* {
         animation: open .9s linear forwards;
@@ -169,6 +170,13 @@ const CardMatrixStyles = cva({
     @keyframes close {
         0% { opacity: 1; }
         100% { opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        details[open] summary~*,
+        details.closing summary~* {
+            animation: none;
+        }
     }
 
 
@@ -201,22 +209,24 @@ const CardMatrixStyles = cva({
 
 <script>
 
-    //Details tags animations
-    const details = document.querySelector("details");
+    //Details tags animations — ALL accordions, not just the first one
+    const detailsList = document.querySelectorAll("details");
 
-    details?.addEventListener("click", (e) => {
-        if (details.hasAttribute("open")) { // since it's not closed yet, it's open!
-            e.preventDefault(); // stop the default behavior, meaning - the hiding
-            details.classList.add("closing"); // add a class which applies the animation in CSS
-        }
-    });
+    detailsList.forEach((details) => {
+        details.addEventListener("click", (e) => {
+            if (details.hasAttribute("open")) { // since it's not closed yet, it's open!
+                e.preventDefault(); // stop the default behavior, meaning - the hiding
+                details.classList.add("closing"); // add a class which applies the animation in CSS
+            }
+        });
 
-    // when the "close" animation is over
-    details?.addEventListener("animationend", (e) => {
-        if (e.animationName === "close") {
-            details.removeAttribute("open"); // close the element
-            details.classList.remove("closing"); // remove the animation
-        }
+        // when the "close" animation is over
+        details.addEventListener("animationend", (e) => {
+            if (e.animationName === "close") {
+                details.removeAttribute("open"); // close the element
+                details.classList.remove("closing"); // remove the animation
+            }
+        });
     });
 
 </script>
@@ -252,15 +262,15 @@ const CardMatrixStyles = cva({
         return div;
     });
 
-    // Intervalos independientes para cada carácter
+    // Intervalo único para los 256 caracteres (antes: 256 setInterval nunca
+    // limpiados → fuga de CPU/batería). Respeta prefers-reduced-motion.
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
     function iniciarCambiosAleatorios() {
-        elementosCaracter.forEach(elemento => {
-            // Intervalo aleatorio entre 100 y 1000 ms
-            const intervalo = Math.floor(Math.random() * 900) + 100;
-
-            setInterval(() => elemento.cambiarCaracter(), intervalo);
-        });
-
+        setInterval(() => {
+            if (reducedMotion.matches) return;
+            elementosCaracter.forEach(elemento => elemento.cambiarCaracter());
+        }, 250);
     }
 
     iniciarCambiosAleatorios();
