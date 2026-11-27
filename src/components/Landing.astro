@@ -34,7 +34,8 @@ const ContainerNavbarStyles = cva({
 ---
 
 <div id="container">
-	<main class="bg-[#161515] flex flex-col h-fit w-full">
+	<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+	<main id="main-content" class="bg-[#161515] flex flex-col h-fit w-full">
 
 		<div id="container-navbar" class:list={["h-fit w-full", ContainerNavbarStyles({})]}>
 			<HeroNavbar />
@@ -48,26 +49,26 @@ const ContainerNavbarStyles = cva({
 			<TrailContent />
 		</section>
 
-		<section id="what-about" class="flex w-full h-fit mt-16 bg-[#161515] justify-center order-3">
+		<section id="what-about" class="flex w-full h-fit bg-[#161515] justify-center order-3">
 			<WhatAboutSection />
 		</section>
 
-		<section id="my-projects" class="flex w-full h-fit md:mt-14 bg-[#161515] justify-center order-4">
+		<section id="my-projects" class="flex w-full h-fit bg-[#161515] justify-center order-4">
 			<MyProjectsSection />
 		</section>
 
-		<section id="my-contact" class="flex w-full h-fit mt-14 bg-[#161515] justify-center order-5">
+		<section id="my-contact" class="flex w-full h-fit bg-[#161515] justify-center order-5">
 			<ContactSection />
 		</section>
 
-		<section id="additional-info" class="flex w-full h-fit mt-14 bg-[#161515] order-6">
+		<section id="additional-info" class="flex w-full h-fit bg-[#161515] order-6">
 			<AdditionalInfo />
 		</section>
 
-		<footer id="footer" class="flex w-full h-fit my-10 order-7 justify-center">
+		<footer id="footer" class="flex w-full h-fit order-7 justify-center">
 			<div class="footer_content__box" class:list={["flex align-middle", css({ height: 'fit-content', width: { xsm: '70%', md: 'fit-content' } })]}>
 				<div class={cx( css({ width: '100%', height: 'fit-content', color: '#888888', fontFamily: 'ubuntu_light', fontSize: '15px' }) )}>
-					Based on <span class="inline-block text-purple-600 w-fit h-fit cursor-pointer"><a href="https://oscarhernandez.vercel.app/" target="_blank" rel="noopener">Oscar Hernandez design</a></span> copyright © 2025 replicated and modified from the scratch by Mario A. Q. S. All rights reserved.
+					Based on <span class="inline-block text-[#c084fc] w-fit h-fit cursor-pointer"><a href="https://oscarhernandez.vercel.app/" target="_blank" rel="noopener">Oscar Hernandez design</a></span> copyright © 2025 replicated and modified from the scratch by Mario A. Q. S. All rights reserved.
 				</div>
 			</div>
 		</footer>
@@ -77,6 +78,30 @@ const ContainerNavbarStyles = cva({
 
 <style>
 	@reference "../styles/global.css";
+
+	.skip-link {
+		position: absolute;
+		left: -9999px;
+		top: 0;
+		z-index: 100;
+		padding: 10px 16px;
+		background: #a855f7;
+		color: #101010;
+		font-weight: 600;
+		border-radius: 0 0 8px 0;
+	}
+	.skip-link:focus {
+		left: 0;
+	}
+
+	a:focus-visible,
+	button:focus-visible,
+	summary:focus-visible,
+	input:focus-visible,
+	textarea:focus-visible {
+		outline: 2px solid #a476ff;
+		outline-offset: 2px;
+	}
 
 	#container {
 		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
